@@ -105,17 +105,9 @@ You can either pass a valid theme as an argument or run it for an interactive th
 
 ### Powerlevel10k configuration
 
-After installing the [Powerlevel10k](https://github.com/romkatv/powerlevel10k) plugin, the wizard may automatically run. By default, it will generate a `.p10k.zsh` file in your home directory (`${HOME}`). There are two paths:
+After installing the [Powerlevel10k](https://github.com/romkatv/powerlevel10k) plugin, the wizard may automatically run. By default, it will generate a `.p10k.zsh` file in your home directory (`${HOME}`).
 
-1. **Use the wizard-generated configuration:**
-   - Complete the Powerlevel10k wizard setup.
-   - Move or copy the `.p10k.zsh` file to `.config/p10k/` to ensure it's loaded by the `.zshrc` config file.
-
-2. **Stow the existing config file:**
-   - Skip the wizard.
-   - Stow the appropriate `.p10k.zsh` file by running `stow p10k`.
-
-Make sure your `.zshrc` is set up to load the correct configuration file based on your choice.
+You can either complete or skip the Powerlevel10k wizard setup. Afterwards, make sure to copy the `zsh/.config/zsh/p10k/p10k.zsh` file to `.config/p10k/` and ensure it's loaded by the `.zshrc` config file.
 
 ### Custom themes with zdharma-continuum fast-syntax-highlighting
 
