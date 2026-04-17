@@ -1,0 +1,90 @@
+[user]
+    name = RNBermudez
+    email = r.n.bermudez@gmail.com
+    signingkey = 6B9813925AE0FC3B
+
+[alias]
+    # Some aliases use non-POSIX Bash syntax ([[ ... ]], ${@:-10}).
+    # Since git runs ! aliases via /bin/sh, these only work where /bin/sh is Bash.
+    # They may fail on systems where /bin/sh is POSIX-only.
+    a = "!f() { if [[ \"${1}\" = \".\" ]]; then git add .; else { git add \"${@}\"; }; fi }; f \"${@}\""
+    c = "!f() { if [[ \"${#}\" = 0 ]]; then git commit; else { git commit \"${@}\"; }; fi; }; f \"${@}\""
+    cm = commit -m
+    l = "!f() { git log --color --graph --pretty=format:'%C(magenta)%h%Creset -%C(cyan)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit \"${@:-\"-n\" \"10\"}\"; }; f"
+    pl = pull
+    psh = push -u origin HEAD
+    ps = push
+    psu = push -u origin
+    rh = reset --hard
+    r = reset
+    ss = status
+    s = status --short
+    wc = switch -c
+    w = switch
+
+    # fzf-based aliases
+    # - fa: Stage files interactively, or all tracked/untracked with '.'
+    # - fd: Diff files interactively; accepts optional ref (e.g. HEAD, --cached)
+    # - fr: Restore (discard) changes interactively
+    # - fu: Unstage files interactively
+    # - fw: Switch branches interactively, or directly if a branch is given
+    fa = "!f() { if [[ \"${1}\" = \".\" ]]; then git add .; else { git diff --name-only -z; git ls-files -o --exclude-standard -z; } | fzf --read0 --print0 -m --height=90% --preview-window=right:60% --preview='git diff --color=always -- {} | delta' | xargs -0 -r -o git add --; fi }; f \"${@}\""
+    fd = "!f() { git diff --name-only -z \"${@}\" | fzf --read0 -m --height=90% --preview-window=right:60% --preview='git diff --color=always -- {} | delta' --print0 | xargs -0 -r -o git diff \"${@}\" --; }; f \"${@}\""
+    fr = "!f() { git diff --name-only -z | fzf --read0 --print0 -m --height=90% --preview-window=right:60% --header='Discard changes?' --preview='git diff --color=always -- {} | delta' | xargs -0 -r git restore; }; f"
+    fu = "!git diff --name-only -z --cached | fzf -m --read0 --print0 --height=90% --preview-window=right:60% --preview='git diff --color=always --cached -- {} | delta' | xargs -0 -r git restore --staged"
+    fw = "!f() { if [[ \"${#}\" -gt 0 ]]; then git switch \"${@}\"; else git branch -a --format='%(refname:short)' | sed 's|origin/||' | fzf | xargs -r git switch; fi }; f \"${@}\""
+
+[core]
+    autocrlf = false
+    editor = nvim
+    pager = delta
+
+[init]
+	defaultBranch = main
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true
+    light = false
+    side-by-side = true
+    line-numbers = true
+
+[merge]
+    tool = nvimdiff
+
+[mergetool]
+    prompt = false
+    keepBackup = false
+
+[mergetool "nvimdiff"]
+    # LOCAL, BASE, REMOTE on top; MERGED (editable) on bottom.
+    layout = "LOCAL,BASE,REMOTE / MERGED"
+
+[diff]
+    tool = nvim
+
+[difftool]
+    prompt = false
+
+[difftool "nvim"]
+    cmd = nvim -d "${LOCAL}" "${REMOTE}"
+
+[blame]
+    pager = delta
+
+[branch]
+    sort = -committerdate
+
+[commit]
+    gpgSign = true
+
+[tag]
+    gpgSign = true
+
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/
+
+[include]
+    path = themes/theme.gitconfig
