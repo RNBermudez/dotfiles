@@ -1,0 +1,6 @@
+--target $HOME
+--ignore README.md
+--ignore LICENSE
+--ignore '\.stowrc'
+--ignore '\.git'
+--ignore '\.gitignore'
