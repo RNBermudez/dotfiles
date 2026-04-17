@@ -17,6 +17,7 @@ Some packages depend on the following tools:
 - [7-Zip](https://www.7-zip.org/): used by Yazi
 - [atuin](https://atuin.sh/): required by zsh
 - [bat](https://github.com/sharkdp/bat): required by zsh, used by Neovim
+- [delta](https://github.com/dandavison/delta): required by zsh and git
 - [eza](https://github.com/eza-community/eza): required by zsh, used by Neovim
 - [fd](https://github.com/sharkdp/fd): required by zsh and theme switcher, used by Neovim and Yazi
 - [fzf](https://github.com/junegunn/fzf): required by zsh and theme switcher, used by Neovim and Yazi
