@@ -1,0 +1,19 @@
+[[mgr.prepend_keymap]]
+on = ["g", "d"]
+run = "cd ${HOME}/dev"
+desc = "Cd to dev"
+
+[[mgr.prepend_keymap]]
+on = ["g", "l"]
+run = "cd ${HOME}/downloads"
+desc = "Cd to downloads"
+
+[[mgr.prepend_keymap]]
+on = ["g", "m"]
+run = "cd ${HOME}/media"
+desc = "Cd to media"
+
+[[mgr.prepend_keymap]]
+on = ["g", "o"]
+run = "cd ${HOME}/docs"
+desc = "Cd to documents"

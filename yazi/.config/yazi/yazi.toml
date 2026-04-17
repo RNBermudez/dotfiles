@@ -1,0 +1,22 @@
+# Yazi file manager config file
+# https://yazi-rs.github.io/docs/configuration/overview
+
+"$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
+
+[mgr]
+ratio = [1, 4, 3]
+sort_by = "extension"
+sort_sensitive = false
+sort_reverse = false
+sort_dir_first = true
+sort_translit = false
+linemode = "size"
+show_hidden = false
+show_symlink = true
+title_format = ""
+
+[preview]
+wrap = "yes"
+
+[input]
+cursor_blink = false
