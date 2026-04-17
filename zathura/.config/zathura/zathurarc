@@ -1,0 +1,30 @@
+# Ref: https://pwmt.org/projects/zathura/documentation/
+
+include "/themes/themerc"
+
+# General
+set selection-clipboard clipboard
+set incremental-search true
+set search-hadjust true
+
+set adjust-open width
+set font "FiraCode Nerd Font 12"
+set window-title-basename true
+set render-loading true
+set page-padding 2
+set guioptions ""
+
+set statusbar-page-percent
+set statusbar-basename true
+
+set zoom-min 10
+set zoom-max 1000
+set zoom-step 10
+
+set scroll-step 50
+set scroll-hstep 50
+set scroll-full-overlap 0.1
+set scroll-wrap false
+
+set recolor true
+set recolor-keephue true
