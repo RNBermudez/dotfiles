@@ -1,0 +1,76 @@
+# Ref: https://docs.atuin.sh/cli/configuration/config/
+
+# Set interim to UK dialect (DD/MM/YYYY) for atuin stats.
+# Prefer ISO-8601 (YYYY-MM-DD) to avoid ambiguity.
+dialect = "uk"
+
+auto_sync = true
+sync_frequency = "10m"
+
+search_mode = "fulltext"
+filter_mode = "global"
+
+style = "compact"
+inline_height = 20
+
+# Use Ctrl instead of Alt for UI shortcuts to avoid macOS Option key conflicts.
+ctrl_n_shortcuts = true
+
+# Prevent commands matching any of these regexes from being written to history.
+## Note that these regular expressions are unanchored, i.e. if they don't start.
+## with ^ or end with $, they'll match anywhere in the command.
+## See: https://docs.rs/regex/latest/regex/#syntax
+history_filter = [
+  "^(fastfetch|neofetch)($|\\s)",
+  "^(ls|la|ll|pwd|clear|reset|exit|history|fg|bg|jobs|true|false|cd|bd)($|\\s)",
+  "^(man|tldr|help|which|type|whence|where)($|\\s)",
+  "^(top|htop|btop)($|\\s)",
+  "^(whoami|id|hostname|uname|date|cal|uptime|w|who)($|\\s)",
+]
+
+store_failed = false
+secrets_filter = true
+
+enter_accept = true
+keymap_mode = "vim-insert"
+
+[stats]
+# Set commands where we should consider the subcommand for statistics.
+common_subcommands = [
+  "cargo",
+  "docker",
+  "git",
+  "go",
+  "ip",
+  "k",
+  "kubectl",
+  "pacman",
+  "paru",
+  "systemctl",
+  "tmux",
+]
+
+# Set commands that should be totally stripped and ignored from stats.
+common_prefix = ["sudo"]
+
+ignored_commands = [
+  "bd",
+  "cd",
+  "clear",
+  "echo",
+  "la",
+  "ll",
+  "ls",
+  "mkd",
+  "mkdir",
+  "pwd",
+]
+
+[sync]
+records = true
+
+[theme]
+name = "theme"
+
+[search]
+filters = ["global", "host", "session", "directory"]
