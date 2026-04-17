@@ -1,0 +1,24 @@
+ # Ignore k9s cluster definitions
+**/k9s/clusters
+
+# Ignore yazi downloaded flavors and package definitions
+**/yazi/flavors
+**/yazi/package.toml
+
+# Ignore dynamically generated application themes
+**/atuin/themes/theme.toml
+**/bat/themes/theme.tmTheme
+**/btop/themes/theme.theme
+**/cava/themes/theme
+**/eza/theme.yml
+**/ghostty/themes/theme
+**/git/themes/theme.gitconfig
+**/nvim/colors/theme.vim
+**/yazi/theme.toml
+**/zathura/themes/themerc
+**/zsh/config/fzf_theme.zsh
+
+# Ignore cava files
+**/cava/shaders/*
+**/cava/themes/solarized_dark
+**/cava/themes/tricolor
