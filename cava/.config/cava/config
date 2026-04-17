@@ -1,0 +1,8 @@
+[general]
+live-config = 1
+
+[output]
+waveform = 0
+
+[color]
+theme = 'theme'
