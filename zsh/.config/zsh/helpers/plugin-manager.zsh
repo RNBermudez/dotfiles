@@ -123,18 +123,12 @@ _update_zsh_plugin_internal() {
 update_zsh_plugins() {
   log_section "Updating zsh plugins"
 
-  mkdir -p "${logs_dir}"
-  pushd "${plugins_dir}" >/dev/null || return 1
-
   for plugin in "${plugins_dir}"/*; do
     if [[ -d "${plugin}/.git" ]]; then
       _update_zsh_plugin_internal "${plugin}"
     fi
   done
 
-  popd >/dev/null || return 1
-
-  log_info "Log file: ${logs_file}"
   log_info "Done"
 }
 
