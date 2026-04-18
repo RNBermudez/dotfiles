@@ -14,6 +14,7 @@
 **/ghostty/themes/theme
 **/git/themes/theme.gitconfig
 **/nvim/colors/theme.vim
+**/p10k/colors.zsh
 **/yazi/theme.toml
 **/zathura/themes/themerc
 **/zsh/config/fzf_theme.zsh
