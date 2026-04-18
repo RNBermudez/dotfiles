@@ -99,15 +99,31 @@ stow -D <package>
 
 ### Theme switcher
 
-A very basic and crude theme switcher that allows theme configuration and hot-reload of supported apps is provided. After stowing the `themes` package, it can be found in `${XDG_CONFIG_HOME}/themes/switch_theme.sh`.
+A very basic theme switcher that allows theme configuration and hot-reload of supported apps is provided. After stowing the `themes` package, it can be found in `${XDG_CONFIG_HOME}/themes/switch_theme.sh`.
 
 You can either pass a valid theme as an argument or run it for an interactive theme selection with `fzf`. It will copy the theme configuration file for all the detected packages, and hot-reload the apps (when supported).
 
+### Updating zsh plugins
+
+The zsh package provides a rudimentary `update_zsh_plugins` helper for keeping plugins up to date. It can be run from any shell session after zsh is loaded:
+
+```sh
+update_zsh_plugins
+```
+
+It checks each installed plugin for upstream changes and prompts interactively before pulling.
+
 ### Powerlevel10k configuration
 
-After installing the [Powerlevel10k](https://github.com/romkatv/powerlevel10k) plugin, the wizard may automatically run. By default, it will generate a `.p10k.zsh` file in your home directory (`${HOME}`).
+After installing the [Powerlevel10k](https://github.com/romkatv/powerlevel10k) plugin, the wizard may automatically run. You can either complete or skip the Powerlevel10k wizard setup:
 
-You can either complete or skip the Powerlevel10k wizard setup. Afterwards, make sure to copy the `zsh/.config/zsh/p10k/p10k.zsh` file to `.config/p10k/` and ensure it's loaded by the `.zshrc` config file.
+1. **Use the wizard-generated configuration:**
+   - Complete the Powerlevel10k wizard setup.
+   - Move the `.p10k.zsh` file to `${XDG_CONFIG_HOME}/p10k/`.
+
+2. **Copy the provided config file:**
+   - Skip the wizard.
+   - Copy the appropriate `.p10k.zsh` file to `${XDG_CONFIG_HOME}/p10k`.
 
 ### Custom themes with zdharma-continuum fast-syntax-highlighting
 
