@@ -14,16 +14,36 @@ Personal dotfiles, tailored to my workflow and preferences, built around my spec
 
 Some packages depend on the following tools:
 
-- [7-Zip](https://www.7-zip.org/): used by Yazi
-- [atuin](https://atuin.sh/): required by zsh
-- [bat](https://github.com/sharkdp/bat): required by zsh, used by Neovim
-- [delta](https://github.com/dandavison/delta): required by zsh and git
-- [eza](https://github.com/eza-community/eza): required by zsh, used by Neovim
-- [fd](https://github.com/sharkdp/fd): required by zsh and theme switcher, used by Neovim and Yazi
-- [fzf](https://github.com/junegunn/fzf): required by zsh and theme switcher, used by Neovim and Yazi
-- [jq](https://github.com/jqlang/jq): used by Yazi
-- [ripgrep](https://github.com/BurntSushi/ripgrep): required by zsh, used by Neovim and Yazi
-- [zoxide](https://github.com/ajeetdsouza/zoxide): required by zsh, used by Neovim and Yazi
+| Tool                                             | Required by                 | Used by      |
+| ------------------------------------------------ | --------------------------- | ------------ |
+| [7-Zip](https://www.7-zip.org/)                  | Yazi                        |              |
+| [atuin](https://atuin.sh/)                       | zsh                         |              |
+| [bat](https://github.com/sharkdp/bat)            | zsh                         | Neovim       |
+| [delta](https://github.com/dandavison/delta)     | zsh, git                    |              |
+| [eza](https://github.com/eza-community/eza)      | zsh                         | Neovim       |
+| [fd](https://github.com/sharkdp/fd)              | zsh, theme switcher         | Neovim, Yazi |
+| [fzf](https://github.com/junegunn/fzf)           | zsh, theme switcher, Neovim | Yazi         |
+| [jq](https://github.com/jqlang/jq)               | -                           | Yazi         |
+| [ripgrep](https://github.com/BurntSushi/ripgrep) | zsh                         | Neovim, Yazi |
+| [zoxide](https://github.com/ajeetdsouza/zoxide)  | zsh                         | Neovim, Yazi |
+
+#### Neovim dependencies
+
+| Tool                                                                          | Type           | Language                         |
+| ----------------------------------------------------------------------------- | -------------- | -------------------------------- |
+| [bash-language-server](https://github.com/bash-lsp/bash-language-server)      | LSP            | Bash, Shell                      |
+| [gopls](https://github.com/golang/tools/tree/master/gopls)                    | LSP            | Go                               |
+| [lua-language-server](https://github.com/LuaLS/lua-language-server)           | LSP            | Lua                              |
+| [systemd-language-server](https://github.com/psacawa/systemd-language-server) | LSP            | systemd                          |
+| [gofumpt](https://github.com/mvdan/gofumpt)                                   | Formatter      | Go                               |
+| [prettierd](https://github.com/fsouza/prettierd)                              | Formatter      | CSS, JSON, JSONC, Markdown, YAML |
+| [shfmt](https://github.com/mvdan/sh)                                          | Formatter      | Bash, Shell, Zsh                 |
+| [stylua](https://github.com/JohnnyMorganz/StyLua)                             | Formatter      | Lua                              |
+| [taplo](https://github.com/tamasfe/taplo)                                     | Formatter      | TOML                             |
+| [selene](https://github.com/Kampfkarren/selene)                               | Linter         | Lua                              |
+| [shellcheck](https://github.com/koalaman/shellcheck)                          | Linter         | Bash, Shell                      |
+| [staticcheck](https://github.com/dominikh/go-tools)                           | Linter         | Go                               |
+| [tree-sitter](https://github.com/tree-sitter/tree-sitter)                     | Treesitter CLI |                                  |
 
 ---
 
