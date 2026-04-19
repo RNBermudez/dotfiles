@@ -29,6 +29,9 @@ Some packages depend on the following tools:
 
 #### Neovim dependencies
 
+> [!Note] All tools are managed by the OS package manager and must be installed manually.
+> Mason is not used on this particular configuration.
+
 | Tool                                                                          | Type           | Language                         |
 | ----------------------------------------------------------------------------- | -------------- | -------------------------------- |
 | [bash-language-server](https://github.com/bash-lsp/bash-language-server)      | LSP            | Bash, Shell                      |
