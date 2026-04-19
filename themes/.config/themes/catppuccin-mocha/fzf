@@ -1,0 +1,22 @@
+#!/bin/false
+# vim: set filetype=sh:
+# Theme: Catppuccin
+# Variant: Mocha
+# Upstream: https://github.com/catppuccin/fzf/tree/main/themes
+
+FZF_DEFAULT_OPTS+=" \
+  --color=border:#6c7086 \
+  --color=fg:#cdd6f4 \
+  --color=gutter:#1e1e2e \
+  --color=header:#f38ba8 \
+  --color=hl+:#f38ba8 \
+  --color=hl:#f38ba8 \
+  --color=info:#cba6f7 \
+  --color=marker:#b4befe \
+  --color=pointer:#f5e0dc \
+  --color=prompt:#cba6f7 \
+  --color=query:#cdd6f4:regular \
+  --color=scrollbar:#6c7086 \
+  --color=separator:#f38ba8 \
+  --color=spinner:#f5e0dc \
+"

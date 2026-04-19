@@ -1,0 +1,74 @@
+# vim: set filetype=conf:
+# Theme: Aphelion
+# Upstream: https://github.com/elenapan/dotfiles/blob/master/config/colorschemes/aphelion
+
+theme[main_bg]="#101319"
+theme[main_fg]="#f4f3ee"
+
+# Title color for boxes
+theme[title]="#f4f3ee"
+
+# Highlight color for keyboard shortcuts
+theme[hi_fg]="#e37e4f"
+
+# Selected item in processes box
+theme[selected_bg]="#3A435A"
+theme[selected_fg]="#5599E2"
+
+# Misc colors for processes box including mini cpu graphs, details memory graph and details status text
+theme[proc_misc]="#5599E2"
+
+# Cpu box outline color
+theme[cpu_box]="#56B7C8"
+
+# Memory/disks box outline color
+theme[mem_box]="#56B7C8"
+
+# Net up/down box outline color
+theme[net_box]="#56B7C8"
+
+# Processes box outline color
+theme[proc_box]="#56B7C8"
+
+# Box divider line and small boxes line color
+theme[div_line]="#56B7C8"
+
+# Temperature graph colors
+theme[temp_start]="#69bfce"
+theme[temp_mid]="#e37e4f"
+theme[temp_end]="#E34F4F"
+
+# CPU graph colors
+theme[cpu_start]="#69bfce"
+theme[cpu_mid]="#e37e4f"
+theme[cpu_end]="#E34F4F"
+
+# Mem/Disk free meter
+theme[free_start]="#69bfce"
+theme[free_mid]="#e37e4f"
+theme[free_end]="#E34F4F"
+
+# Mem/Disk cached meter
+theme[cached_start]="#69bfce"
+theme[cached_mid]="#e37e4f"
+theme[cached_end]="#E34F4F"
+
+# Mem/Disk available meter
+theme[available_start]="#69bfce"
+theme[available_mid]="#e37e4f"
+theme[available_end]="#E34F4F"
+
+# Mem/Disk used meter
+theme[used_start]="#69bfce"
+theme[used_mid]="#e37e4f"
+theme[used_end]="#E34F4F"
+
+# Download graph colors
+theme[download_start]="#69bfce"
+theme[download_mid]="#e37e4f"
+theme[download_end]="#E34F4F"
+
+# Upload graph colors
+theme[upload_start]="#69bfce"
+theme[upload_mid]="#e37e4f"
+theme[upload_end]="#E34F4F"

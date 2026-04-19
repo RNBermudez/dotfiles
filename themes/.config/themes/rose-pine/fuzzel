@@ -1,0 +1,16 @@
+# vim: set filetype=ini:
+# Theme: Rosé Pine
+# Upstream: https://https://github.com/bomgar/rose-pine-fuzzel
+
+[colors]
+background=1f1d2eff
+text=6e6a86ff
+prompt=c4a7e7ff
+placeholder=6e6a86ff
+input=e0def4ff
+match=31748fff
+selection=ebbcba00
+selection-text=908caaff
+selection-match=9ccfd8ff
+counter=6e6a86ff
+border=ebbcbaff

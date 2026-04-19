@@ -1,0 +1,12 @@
+# vim: set filetype=ini:
+# Theme: Aphelion
+# Upstream: https://github.com/elenapan/dotfiles/blob/master/config/colorschemes/aphelion
+
+[colors]
+background=101319ff
+text=f4f3eeff
+match=56b7c8ff
+selection=3a435aff
+selection-match=56b7c8ff
+selection-text=f4f3eeff
+border=5679e3ff

@@ -1,0 +1,16 @@
+; vim: set filetype=gitconfig:
+; Theme: Aphelion
+; Upstream: https://github.com/elenapan/dotfiles/blob/master/config/colorschemes/aphelion
+
+[delta]
+    minus-style                   = syntax "#3d1a1a"
+    minus-non-emph-style          = syntax "#3d1a1a"
+    minus-emph-style              = syntax "#5c2525"
+    minus-empty-line-marker-style = syntax "#3d1a1a"
+    line-numbers-minus-style      = "#DE2B2B"
+    plus-style                    = syntax "#143136"
+    plus-non-emph-style           = syntax "#143136"
+    plus-emph-style               = syntax "#1c4a52"
+    plus-empty-line-marker-style  = syntax "#143136"
+    line-numbers-plus-style       = "#56B7C8"
+    line-numbers-zero-style       = "#3A435A"

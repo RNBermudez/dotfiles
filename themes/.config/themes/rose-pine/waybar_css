@@ -1,0 +1,189 @@
+/* vim: set filetype=css: */
+
+/* rosé pine palette */
+/* https://rosepinetheme.com/palette/ingredients */
+@define-color base #191724;
+@define-color surface #1f1d2e;
+@define-color overlay #26233a;
+@define-color muted #6e6a86;
+@define-color subtle #908caa;
+@define-color text #e0def4;
+@define-color love #eb6f92;
+@define-color gold #f6c177;
+@define-color rose #ebbcba;
+@define-color pine #31748f;
+@define-color foam #9ccfd8;
+@define-color iris #c4a7e7;
+@define-color highlight_low #21202e;
+@define-color highlight_med #403d52;
+@define-color highlight_high #524f67;
+
+/* bar */
+@define-color bar_bg @base;
+@define-color bar_fg @subtle;
+
+/* tooltip */
+@define-color tooltip_fg @subtle;
+@define-color tooltip_bg @surface;
+@define-color tooltip_border_start @rose;
+@define-color tooltip_border_end @gold;
+
+/* workspaces */
+@define-color workspace_active_fg @rose;
+@define-color workspace_inactive_fg @highlight_med;
+@define-color workspace_hover_fg @gold;
+@define-color workspace_urgent_fg @love;
+@define-color window_title @surface;
+
+/* modules - system */
+@define-color system_group_fg @subtle;
+@define-color system_group_bg @base;
+@define-color system_hover_fg @gold;
+@define-color system_disabled_fg @highlight_med;
+@define-color system_bluetooth_connected_fg @foam;
+@define-color system_clock_fg @highlight_med;
+
+/* states */
+@define-color state_warning @gold;
+@define-color state_critical @love;
+
+@keyframes blink {
+  50% {
+    color: @state_critical;
+  }
+}
+
+* {
+  font-family: "Terminus";
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  padding: 0;
+  box-shadow: none;
+  text-shadow: none;
+  -gtk-icon-shadow: none;
+}
+
+window#waybar {
+  color: @bar_fg;
+  background-color: @bar_bg;
+}
+
+tooltip {
+  border-radius: 10px;
+  border: 2px solid transparent;
+
+  background-image:
+    linear-gradient(@tooltip_bg, @tooltip_bg),
+    linear-gradient(315deg, @tooltip_border_start, @tooltip_border_end);
+
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+
+  color: @tooltip_fg;
+  padding: 6px 8px;
+}
+
+tooltip label {
+  color: @tooltip_fg;
+  font-size: 14px;
+  padding: 8px;
+}
+
+#workspaces {
+  margin: 6px 6px;
+  border-radius: 10px;
+  padding: 0px 6px 0px 2px;
+}
+
+#workspaces button {
+  color: @workspace_inactive_fg;
+  transition: color 0.75s ease;
+  padding: 0px 6px;
+}
+
+#workspaces button label {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 22px;
+}
+
+#workspaces button.active {
+  color: @workspace_active_fg;
+  transition: color 0.25s ease;
+}
+
+#workspaces button:hover {
+  color: @workspace_hover_fg;
+  transition: color 0.25s ease;
+  background: transparent;
+  box-shadow: none;
+}
+
+#workspaces button.urgent {
+  color: @workspace_urgent_fg;
+  animation: blink 1s infinite;
+}
+
+#window {
+  font-size: 16px;
+  padding: 4px 80px;
+}
+
+window#waybar.empty #window {
+  background: transparent;
+}
+
+#system {
+  color: @system_group_fg;
+  background-color: @system_group_bg;
+  border-radius: 10px;
+  margin: 6px 6px;
+  padding: 2px 4px;
+}
+
+#network,
+#bluetooth,
+#wireplumber,
+#battery {
+  font-family: "JetBrainsMono Nerd Font";
+  min-width: 24px;
+  margin: 0px 1px;
+  transition: color 0.75s ease;
+  padding: 0px 4px;
+}
+
+#bluetooth.connected {
+  color: @system_bluetooth_connected_fg;
+}
+
+#bluetooth.disabled {
+  color: @system_disabled_fg;
+}
+
+#wireplumber.muted {
+  color: @system_disabled_fg;
+}
+
+#battery.warning {
+  color: @state_warning;
+}
+
+#battery.critical {
+  color: @state_critical;
+  animation: blink 1s infinite;
+}
+
+#clock {
+  color: @system_clock_fg;
+  padding-right: 8px;
+}
+
+#network:hover,
+#bluetooth:hover,
+#wireplumber:hover,
+#battery:hover {
+  color: @system_hover_fg;
+  transition: color 0.25s ease;
+}

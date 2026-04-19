@@ -1,0 +1,29 @@
+# vim: set filetype=ini:
+# Theme: Rosé Pine
+# Upstrea: https://github.com/d2718nis/rose-pine-dunst
+
+[global]
+    width = 300
+    height = (0, 250)
+    origin = top-right
+    offset = (0, 0)
+    scale = 0
+
+    background = "#1f1d2e"
+    frame_color = "#ebbcba"
+
+[urgency_low]
+    foreground = "#6e6a86"
+
+[urgency_normal]
+    foreground = "#908caa"
+
+[urgency_critical]
+    foreground = "#eb6f92"
+    frame_color = "#f6c177"
+
+[brightness_notification]
+    highlight = "#c4a7e7, #ebbcba, #f6c177, #eb6f92"
+
+[volume_notification]
+    highlight = "#c4a7e7, #ebbcba, #f6c177, #eb6f92"

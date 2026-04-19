@@ -1,0 +1,169 @@
+<!-- vim: set filetype=xml: -->
+<!-- Theme: Aphelion -->
+<!-- Upstream: https://github.com/elenapan/dotfiles/blob/master/config/colorschemes/aphelion -->
+
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>author</key>
+  <string>Elena (https://github.com/elenapan)</string>
+  <key>colorSpaceName</key>
+  <string>sRGB</string>
+  <key>name</key>
+  <string>Aphelion</string>
+  <key>semanticClass</key>
+  <string>enki.theme.aphelion</string>
+  <key>settings</key>
+  <array>
+    <dict>
+      <key>settings</key>
+      <dict>
+        <key>activeGuide</key>
+        <string>#3A435A</string>
+        <key>background</key>
+        <string>#101319</string>
+        <key>caret</key>
+        <string>#f4f3ee</string>
+        <key>findHighlight</key>
+        <string>#e37e4f</string>
+        <key>findHighlightForeground</key>
+        <string>#101319</string>
+        <key>foreground</key>
+        <string>#f4f3ee</string>
+        <key>guide</key>
+        <string>#3A435A40</string>
+        <key>gutterForeground</key>
+        <string>#3A435Aaa</string>
+        <key>inactiveSelection</key>
+        <string>#171b24</string>
+        <key>invisibles</key>
+        <string>#3A435A</string>
+        <key>lineHighlight</key>
+        <string>#00000030</string>
+        <key>selection</key>
+        <string>#3A435A60</string>
+        <key>selectionBorder</key>
+        <string>#3A435A</string>
+        <key>shadow</key>
+        <string>#00000010</string>
+        <key>stackGuide</key>
+        <string>#3A435A60</string>
+        <key>tagsOptions</key>
+        <string>underline</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key>
+      <string>Comment</string>
+      <key>scope</key>
+      <string>comment, comment.block.documentation, punctuation.definition.comment</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key>
+        <string>#3A435A</string>
+        <key>fontStyle</key>
+        <string>italic</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key>
+      <string>String</string>
+      <key>scope</key>
+      <string>string</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key>
+        <string>#69bfce</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key>
+      <string>Number, Boolean</string>
+      <key>scope</key>
+      <string>constant.numeric, constant.language, variable.other.constant</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key>
+        <string>#e37e4f</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key>
+      <string>Keyword, Storage</string>
+      <key>scope</key>
+      <string>keyword, storage.type, storage.modifier, keyword.control</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key>
+        <string>#956dca</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key>
+      <string>Functions</string>
+      <key>scope</key>
+      <string>entity.name.function, meta.function-call, variable.function, support.function</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key>
+        <string>#5679E3</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key>
+      <string>Operators, Punctuation</string>
+      <key>scope</key>
+      <string>keyword.operator, punctuation, punctuation.definition.string, punctuation.definition.variable</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key>
+        <string>#5599E2</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key>
+      <string>Tags</string>
+      <key>scope</key>
+      <string>entity.name.tag, meta.tag, punctuation.definition.tag</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key>
+        <string>#E34F4F</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key>
+      <string>Attributes</string>
+      <key>scope</key>
+      <string>entity.other.attribute-name</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key>
+        <string>#956dca</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key>
+      <string>Diff Inserted</string>
+      <key>scope</key>
+      <string>markup.inserted</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key>
+        <string>#56B7C8</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key>
+      <string>Diff Deleted</string>
+      <key>scope</key>
+      <string>markup.deleted</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key>
+        <string>#DE2B2B</string>
+      </dict>
+    </dict>
+  </array>
+</dict>
+</plist>

@@ -1,0 +1,33 @@
+# vim: set filetype=zathurarc:
+# Theme: Aphelion
+# Upstream: https://github.com/elenapan/dotfiles/blob/master/config/colorschemes/aphelion
+
+set notification-error-bg "#E34F4F"
+set notification-error-fg "#f4f3ee"
+set notification-warning-bg "#e37e4f"
+set notification-warning-fg "#101319"
+set notification-bg "#101319"
+set notification-fg "#f4f3ee"
+set completion-bg "#101319"
+set completion-fg "#5599E2"
+set completion-group-bg "#101319"
+set completion-group-fg "#5599E2"
+set completion-highlight-bg "#3A435A"
+set completion-highlight-fg "#f4f3ee"
+set index-bg "#101319"
+set index-fg "#f4f3ee"
+set index-active-bg "#3A435A"
+set index-active-fg "#f4f3ee"
+set inputbar-bg "#101319"
+set inputbar-fg "#f4f3ee"
+set statusbar-bg "#101319"
+set statusbar-fg "#f4f3ee"
+set highlight-color "#e37e4f"
+set highlight-active-color "#69bfce"
+set default-bg "#101319"
+set default-fg "#f4f3ee"
+set render-loading true
+set render-loading-fg "#101319"
+set render-loading-bg "#f4f3ee"
+set recolor-lightcolor "#101319"
+set recolor-darkcolor "#f4f3ee"

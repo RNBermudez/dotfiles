@@ -1,0 +1,21 @@
+#!/bin/false
+# vim: set filetype=sh:
+# Theme: Aphelion
+# Upstream: https://github.com/elenapan/dotfiles/blob/master/config/colorschemes/aphelion
+
+FZF_DEFAULT_OPTS+=" \
+  --color=border:#5679E3 \
+  --color=fg:#f4f3ee \
+  --color=gutter:#101319 \
+  --color=header:#e37e4f \
+  --color=hl+:#56B7C8 \
+  --color=hl:#56B7C8 \
+  --color=info:#3A435A \
+  --color=marker:#E34F4F \
+  --color=pointer:#E34F4F \
+  --color=prompt:#5599E2 \
+  --color=query:#f4f3ee:regular \
+  --color=scrollbar:#5679E3 \
+  --color=separator:#e37e4f \
+  --color=spinner:#E34F4F \
+"
