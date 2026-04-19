@@ -1,0 +1,18 @@
+# vim: set filetype=toml:
+# Theme: Aphelion
+# Upstream: https://github.com/elenapan/dotfiles/blob/master/config/colorschemes/aphelion
+
+[theme]
+name = "aphelion"
+parent = "default"
+
+[colors]
+AlertInfo = "#56b7c8"
+AlertWarn = "#de642b"
+AlertError = "#e37e4f"
+Annotation = "#3a435a"
+Base = "#f4f3ee"
+Guidance = "#885ac4"
+Important = "#5679e3"
+Title = "#956dca"
+Muted = "#3a435a"

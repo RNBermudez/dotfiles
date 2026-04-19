@@ -1,0 +1,27 @@
+#!/bin/false
+# vim: set filetype=sh:
+# Theme: Aphelion
+# Upstream: https://github.com/elenapan/dotfiles/blob/master/config/colorschemes/aphelion
+# shellcheck disable=SC1008,SC2034
+
+fg_prompt="5"
+fg_prompt_error="1"
+fg_dir="6"
+fg_vcs="8"
+fg_vcs_alt="13"
+fg_venv="8"
+fg_exec_time="3"
+fg_ctx_root="7"
+fg_ctx="8"
+fg_time="8"
+
+# Kubernetes specific colors
+fg_kube_prod="1"
+fg_kube_cat="3"
+fg_kube_stage="6"
+fg_kube_dev="2"
+fg_kube_default="5"
+
+# AWS specific colors
+fg_aws="3"
+fg_aws_eb="2"

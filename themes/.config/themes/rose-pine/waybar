@@ -1,0 +1,107 @@
+// vim: set filetype=jsonc
+
+{
+  "reload_style_on_change": true,
+  "position": "top",
+  "height": 42,
+
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["hyprland/window"],
+  "modules-right": ["group/system", "clock"],
+  "group/system": {
+    "orientation": "horizontal",
+    "modules": ["network", "bluetooth", "pulseaudio", "wireplumber", "battery"],
+  },
+
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "1": "󰲠",
+      "2": "󰲢",
+      "3": "󰲤",
+      "4": "󰲦",
+      "5": "󰲨",
+      "6": "󰲪",
+      "7": "󰲬",
+      "8": "󰲮",
+      "9": "󰲰",
+      "10": "󰿬",
+    },
+  },
+
+  "network": {
+    "format-wifi": "{icon} ",
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format-ethernet": "󰈀 ",
+    "format-linked": "󰈀 {ifname} (No IP)",
+    "format-disconnected": "󰤭 ",
+    "tooltip-format-wifi": "Network: {essid}\nSignal strength: {signaldBm}dBm ({signalStrength}%)\nFrequency: {frequency}MHz\nInterface: {ifname}\nIP: {ipaddr}/{cidr}\nGateway: {gwaddr}\nNetmask: {netmask}",
+    "tooltip-format-ethernet": "Network: {essid}\nInterface: {ifname}\nIP: {ipaddr}/{cidr}\nGateway: {gwaddr}\nNetmask: {netmask}",
+    "tooltip-format-linked": "Interface: {ifname} (No IP)",
+    "tooltip-format-disconnected": "Disconnected",
+  },
+
+  "bluetooth": {
+    "format-disabled": "󰂲",
+    "format-off": "󰂲",
+    "format-on": "󰂯",
+    "format-connected": "󰂱",
+    "tooltip-format": "{num_connections} connected",
+    "tooltip-format-connected": "{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias} ({device_battery_percentage}%)\t{device_address}",
+  },
+
+  "wireplumber": {
+    "format": "{icon} ",
+    "format-muted": "󰖁 ",
+    "format-icons": ["󰕿", "󰖀", "󰕾"],
+    "tooltip-format": "{node_name} {volume}%",
+    "on-click": "~/.config/scripts/volume.sh mute",
+    "on-scroll-up": "~/.config/scripts/volume.sh up",
+    "on-scroll-down": "~/.config/scripts/volume.sh down",
+  },
+
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15,
+    },
+    "interval": 10,
+    "format": "{icon}",
+    "format-warning": "{icon}",
+    "format-critical": "{icon}",
+    "format-charging": "{icon}",
+    "format-plugged": "{icon}",
+    "format-alt": "{icon} {capacity}",
+    "format-full": "{icon}",
+    "format-icons": {
+      "default": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+      "charging": ["󰂆", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
+      "plugged": ["󰂆", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
+    },
+    "tooltip-format": "{time} {capacity}%",
+  },
+
+  "clock": {
+    "timezone": "America/Argentina/Buenos_Aires",
+    "format": " {:%H:%M %p}",
+    "format-alt": " {:%H:%M %p %d/%m/%Y}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "on-scroll": 1,
+      "format": {
+        "weekdays": "<span color='#908caa'>{}</span>",
+        "months": "<span color='#f6c177'><b>{}</b></span>",
+        "today": "<span color='#9ccfd8'>{}</span>",
+      },
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down",
+    },
+  },
+}

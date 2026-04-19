@@ -1,0 +1,19 @@
+# vim: set filetype=toml:
+# Theme: Tokyo Night
+# Variant: Night
+# Upstream: https://github.com/folke/tokyonight.nvim/tree/main/extras/atuin
+
+[theme]
+name = "tokyonight_night"
+parent = "default"
+
+[colors]
+AlertInfo = "#73daca"
+AlertWarn = "#e0af68"
+AlertError = "#f7768e"
+Annotation = "#414868"
+Base = "#c0caf5"
+Guidance = "#ff9e64"
+Important = "#7aa2f7"
+Title = "#bb9af7"
+Muted = "#545c7e"

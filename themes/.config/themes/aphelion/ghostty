@@ -1,0 +1,26 @@
+# vim: set filetype=ini:
+# Theme: Aphelion
+# Upstream: https://github.com/elenapan/dotfiles/blob/master/config/colorschemes/aphelion
+
+palette = 0=#171b24
+palette = 1=#e34f4f
+palette = 2=#69bfce
+palette = 3=#e37e4f
+palette = 4=#5679e3
+palette = 5=#956dca
+palette = 6=#5599e2
+palette = 7=#f4f3ee
+palette = 8=#3a435a
+palette = 9=#de2b2b
+palette = 10=#56b7c8
+palette = 11=#de642b
+palette = 12=#3e66e0
+palette = 13=#885ac4
+palette = 14=#3f8cde
+palette = 15=#dddbcf
+
+background = #101319
+foreground = #f4f3ee
+cursor-color = #f4f3ee
+selection-background = #3a435a
+selection-foreground = #f4f3ee

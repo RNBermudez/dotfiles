@@ -1,0 +1,38 @@
+# vim: set filetype=ini:
+# Theme: Tokyo Night
+# Variant: Night
+# Upstream: https://github.com/folke/tokyonight.nvim/tree/main/extras/dunst
+
+[global]
+    width = 300
+    height = (0, 250)
+    origin = top-right
+    offset = (0, 0)
+    scale = 0
+
+    frame_color = "#89b4fa"
+    separator_color= frame
+    highlight = "#89b4fa"
+    background = "#1e1e2e"
+
+[global]
+    frame_color = "#89dceb" # sky
+
+[urgency_low]
+    background = "#1e1e2e" # base
+    foreground = "#a6adc8" # subtext0
+
+[urgency_normal]
+    background = "#1e1e2e" # base
+    foreground = "#a6adc8" # subtext0
+
+[urgency_critical]
+    background = "#1e1e2e" # base
+    foreground = "#a6adc8" # subtext0
+    frame_color = "#f5c2e7" # pink
+
+[volume_notification]
+    highlight = "#cba6f7, #b4befe, #89b4fa, #94e2d5" # mauve, lavender, blue, teal
+
+[brightness_notification]
+    highlight = "#cba6f7, #b4befe, #89b4fa, #94e2d5" # mauve, lavender, blue, teal

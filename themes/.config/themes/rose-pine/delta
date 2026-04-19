@@ -1,0 +1,18 @@
+; vim: set filetype=gitconfig:
+; Theme: Rosé Pine
+; Upstream: https://github.com/folke/tokyonight.nvim/blob/main/extras/delta
+
+[delta]
+    minus-style                   = syntax "#2d222d"
+    minus-non-emph-style          = syntax "#2d222d"
+    minus-emph-style              = syntax "#472438"
+    minus-empty-line-marker-style = syntax "#2d222d"
+    line-numbers-minus-style      = "#eb6f92"
+
+    plus-style                    = syntax "#1e293b"
+    plus-non-emph-style           = syntax "#1e293b"
+    plus-emph-style               = syntax "#284355"
+    plus-empty-line-marker-style  = syntax "#1e293b"
+    line-numbers-plus-style       = "#9ccfd8"
+
+    line-numbers-zero-style       = "#6e6a86"

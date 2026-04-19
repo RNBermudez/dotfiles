@@ -1,0 +1,5 @@
+# vim: set filetype=sh
+
+export HYPRCURSOR_THEME="rose-pine"
+export HYPRCURSOR_SIZE=30
+export HYPRSHOT_DIR=$HOME/media/pictures/screenshots

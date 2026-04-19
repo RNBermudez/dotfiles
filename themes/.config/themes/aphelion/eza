@@ -1,0 +1,106 @@
+# vim: set filetype=yaml:
+# Theme: Aphelion
+# Upstream: https://github.com/elenapan/dotfiles/blob/master/config/colorschemes/aphelion
+
+colourful: true
+
+filekinds:
+  normal: { foreground: "#f4f3ee" }
+  directory: { foreground: "#5599e2" }
+  symlink: { foreground: "#5599e2" }
+  pipe: { foreground: "#3a435a" }
+  block_device: { foreground: "#e37e4f" }
+  char_device: { foreground: "#e37e4f" }
+  socket: { foreground: "#3a435a" }
+  special: { foreground: "#956dca" }
+  executable: { foreground: "#69bfce" }
+  mount_point: { foreground: "#56b7c8" }
+
+perms:
+  user_read: { foreground: "#5599e2" }
+  user_write: { foreground: "#69bfce" }
+  user_execute_file: { foreground: "#e37e4f" }
+  user_execute_other: { foreground: "#e37e4f" }
+  group_read: { foreground: "#5599e2" }
+  group_write: { foreground: "#69bfce" }
+  group_execute: { foreground: "#e37e4f" }
+  other_read: { foreground: "#5599e2" }
+  other_write: { foreground: "#69bfce" }
+  other_execute: { foreground: "#e37e4f" }
+  special_user_file: { foreground: "#e34f4f" }
+  special_other: { foreground: "#de2b2b" }
+  attribute: { foreground: "#3a435a" }
+
+size:
+  major: { foreground: "#5599e2" }
+  minor: { foreground: "#956dca" }
+  number_byte: { foreground: "#dddbcf" }
+  number_kilo: { foreground: "#3f8cde" }
+  number_mega: { foreground: "#5599e2" }
+  number_giga: { foreground: "#e37e4f" }
+  number_huge: { foreground: "#de2b2b" }
+  unit_byte: { foreground: "#dddbcf" }
+  unit_kilo: { foreground: "#3f8cde" }
+  unit_mega: { foreground: "#5599e2" }
+  unit_giga: { foreground: "#e37e4f" }
+  unit_huge: { foreground: "#de2b2b" }
+
+users:
+  user_you: { foreground: "#5679e3" }
+  user_root: { foreground: "#956dca" }
+  user_other: { foreground: "#5599e2" }
+  group_yours: { foreground: "#3f8cde" }
+  group_root: { foreground: "#956dca" }
+  group_other: { foreground: "#dddbcf" }
+
+links:
+  normal: { foreground: "#3f8cde" }
+  multi_link_file: { foreground: "#5599e2" }
+
+git:
+  new: { foreground: "#69bfce" }
+  modified: { foreground: "#956dca" }
+  deleted: { foreground: "#de2b2b" }
+  renamed: { foreground: "#5599e2" }
+  typechange: { foreground: "#5599e2" }
+  ignored: { foreground: "#3a435a" }
+  conflicted: { foreground: "#e37e4f" }
+
+git_repo:
+  branch_main: { foreground: "#3a435a" }
+  branch_other: { foreground: "#56b7c8" }
+  git_clean: { foreground: "#3a435a" }
+  git_dirty: { foreground: "#956dca" }
+
+security_context:
+  colon: { foreground: "#3a435a" }
+  user: { foreground: "#3a435a" }
+  role: { foreground: "#5599e2" }
+  typ: { foreground: "#5679e3" }
+  range: { foreground: "#956dca" }
+
+file_type:
+  image: { foreground: "#3f8cde" }
+  video: { foreground: "#56b7c8" }
+  music: { foreground: "#5599e2" }
+  lossless: { foreground: "#56b7c8" }
+  crypto: { foreground: "#de2b2b" }
+  document: { foreground: "#f4f3ee" }
+  compressed: { foreground: "#e37e4f" }
+  temp: { foreground: "#3a435a" }
+  compiled: { foreground: "#3a435a" }
+  build: { foreground: "#69bfce" }
+  source: { foreground: "#956dca" }
+
+punctuation: { foreground: "#956dca" }
+date: { foreground: "#3a435a" }
+inode: { foreground: "#3a435a" }
+blocks: { foreground: "#3a435a" }
+header: { foreground: "#f4f3ee" }
+octal: { foreground: "#e37e4f" }
+flags: { foreground: "#956dca" }
+
+symlink_path: { foreground: "#956dca" }
+control_char: { foreground: "#e37e4f" }
+broken_symlink: { foreground: "#e34f4f" }
+broken_path_overlay: { foreground: "#de2b2b" }

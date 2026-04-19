@@ -1,0 +1,48 @@
+# vim: set filetype=hyprlang
+
+# palette
+# https://rosepinetheme.com/palette/ingredients
+$base    = 191724
+$surface = 1f1d2e
+$overlay = 26233a
+$muted   = 6e6a86
+$subtle  = 908caa
+$text    = e0def4
+$love    = eb6f92
+$gold    = f6c177
+$rose    = ebbcba
+$pine    = 31748f
+$foam    = 9ccfd8
+$iris    = c4a7e7
+$highlight_low  = 21202e
+$highlight_med  = 403d52
+$highlight_high = 524f67
+
+# Window colors
+$border_focused_start  = rgba($roseff)
+$border_focused_middle = rgba($goldff)
+$border_focused_end    = rgba($goldff)
+
+$border_unfocused_start  = rgba($irisff)
+$border_unfocused_middle = rgba($irisff)
+$border_unfocused_end    = rgba($irisff)
+
+# Cursor
+$cursor_theme = rose-pine-hyprcursor
+$cursor_size = 30
+
+# Wallpaper
+$wallpaper = $HOME/media/pictures/wallpapers/block_wave_moon.png
+
+# hyprlock
+$inner_color = rgba($overlayff)
+$outer_color_top = rgba($goldff)
+$outer_color_bottom = rgba($roseff)
+$check_color_top = rgba($roseff)
+$check_color_bottom = rgba($irisff)
+$fail_color_top = rgba($irisff)
+$fail_color_bottom = rgba($loveff)
+$capslock_color = rgba($mutedff)
+$clock_color = rgba($gold1a)
+$font_color = rgba($foamff)
+$font = Terminus

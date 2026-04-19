@@ -1,0 +1,159 @@
+# vim: set filetype=toml:
+# Theme: Aphelion
+# Upstream: https://github.com/elenapan/dotfiles/blob/master/config/colorschemes/aphelion
+
+[mgr]
+# syntect_theme = "~/.config/bat/themes/Aphelion.tmTheme"
+
+cwd = { fg = "#5599E2", italic = true }
+
+# Hovered
+hovered = { bg = "#3A435A" }
+preview_hovered = { bg = "#3A435A" }
+
+# Find
+find_keyword = { fg = "#101319", bg = "#e37e4f", bold = true }
+find_position = { fg = "#56B7C8", bg = "#171b24", bold = true }
+
+# Marker
+marker_copied = { fg = "#69bfce", bg = "#69bfce" }
+marker_cut = { fg = "#E34F4F", bg = "#E34F4F" }
+marker_marked = { fg = "#956dca", bg = "#956dca" }
+marker_selected = { fg = "#5679E3", bg = "#5679E3" }
+
+# Count
+count_copied = { fg = "#101319", bg = "#69bfce" }
+count_cut = { fg = "#101319", bg = "#E34F4F" }
+count_selected = { fg = "#101319", bg = "#5679E3" }
+
+# Border
+border_symbol = "│"
+border_style = { fg = "#56B7C8" }
+
+# Tab
+[tabs]
+active = { fg = "#101319", bg = "#5679E3" }
+inactive = { fg = "#5679E3", bg = "#171b24" }
+
+[mode]
+normal_main = { fg = "#101319", bg = "#5679E3" }
+normal_alt = { fg = "#5679E3", bg = "#171b24" }
+
+select_main = { fg = "#101319", bg = "#956dca" }
+select_alt = { fg = "#956dca", bg = "#171b24" }
+
+unset_main = { fg = "#101319", bg = "#5599E2" }
+unset_alt = { fg = "#5599E2", bg = "#171b24" }
+
+[status]
+overall = { fg = "#f4f3ee", bg = "#101319" }
+sep_left = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+
+# Progress
+progress_label = { fg = "#f4f3ee" }
+progress_normal = { fg = "#5679E3", bg = "#3A435A" }
+progress_error = { fg = "#DE2B2B", bg = "#3A435A" }
+
+# Permissions
+perm_type = { fg = "#5679E3" }
+perm_read = { fg = "#e37e4f" }
+perm_write = { fg = "#E34F4F" }
+perm_exec = { fg = "#69bfce" }
+perm_sep = { fg = "#3A435A" }
+
+[pick]
+border = { fg = "#56B7C8" }
+active = { fg = "#f4f3ee", bg = "#3A435A" }
+inactive = { fg = "#f4f3ee" }
+
+# Input
+[input]
+border = { fg = "#56B7C8" }
+title = { fg = "#56B7C8" }
+value = { fg = "#956dca" }
+selected = { bg = "#3A435A" }
+
+# Completion
+[cmp]
+border = { fg = "#56B7C8" }
+active = { fg = "#f4f3ee", bg = "#3A435A" }
+inactive = { fg = "#f4f3ee" }
+
+icon_file = ""
+icon_folder = ""
+icon_command = ""
+
+# Tasks
+[tasks]
+border = { fg = "#56B7C8" }
+title = { fg = "#56B7C8" }
+hovered = { fg = "#f4f3ee", bg = "#3A435A" }
+
+# Which
+[which]
+cols = 3
+mask = { bg = "#101319" }
+cand = { fg = "#5599E2" }
+rest = { fg = "#5679E3" }
+desc = { fg = "#956dca" }
+separator = " ➜ "
+separator_style = { fg = "#3A435A" }
+
+# Confirm
+[confirm]
+border = { fg = "#56B7C8" }
+title = { fg = "#56B7C8" }
+content = {}
+list = {}
+btn_yes = { bg = "#3A435A" }
+btn_no = {}
+btn_labels = ["  [Y]es  ", "  (N)o  "]
+
+# Spot
+[spot]
+border = { fg = "#56B7C8" }
+title = { fg = "#56B7C8" }
+
+# Notify
+[notify]
+title_info = { fg = "#56B7C8" }
+title_warn = { fg = "#e37e4f" }
+title_error = { fg = "#DE2B2B" }
+
+icon_error = ""
+icon_warn = ""
+icon_info = ""
+
+# Help
+[help]
+on = { fg = "#69bfce" }
+run = { fg = "#956dca" }
+desc = { fg = "#5599E2" }
+hovered = { bg = "#3A435A" }
+footer = { fg = "#f4f3ee", bg = "#101319" }
+
+[filetype]
+
+rules = [
+  # Images
+  { mime = "image/*", fg = "#e37e4f" },
+
+  # Media
+  { mime = "{audio,video}/*", fg = "#956dca" },
+
+  # Archives
+  { mime = "application/*zip", fg = "#E34F4F" },
+  { mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", fg = "#E34F4F" },
+
+  # Documents
+  { mime = "application/{pdf,doc,rtf,vnd.*}", fg = "#5599E2" },
+
+  # Special files
+  { name = "*", is = "orphan", bg = "#DE2B2B" },
+  { name = "*", is = "exec", fg = "#69bfce" },
+
+  # Fallback
+  { name = "*/", fg = "#5679E3" },
+  { name = "*", fg = "#f4f3ee" },
+]
