@@ -29,7 +29,8 @@ Some packages depend on the following tools:
 
 #### Neovim dependencies
 
-> [!Note] All tools are managed by the OS package manager and must be installed manually.
+> [!IMPORTANT]
+> All tools are managed by the OS package manager and must be installed manually.
 > Mason is not used on this particular configuration.
 
 | Tool                                                                          | Type           | Language                         |
