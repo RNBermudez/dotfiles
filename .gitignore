@@ -2,7 +2,8 @@
 **/k9s/clusters
 
 # Ignore yazi downloaded flavors and package definitions
-**/yazi/flavors
+**/yazi/flavors/*
+**/yazi/plugins/*
 **/yazi/package.toml
 
 # Ignore dynamically generated application themes
@@ -13,7 +14,7 @@
 **/eza/theme.yml
 **/ghostty/themes/theme
 **/git/themes/theme.gitconfig
-**/nvim/colors/theme.vim
+**/nvim/colors/*
 **/p10k/colors.zsh
 **/yazi/theme.toml
 **/zathura/themes/themerc
