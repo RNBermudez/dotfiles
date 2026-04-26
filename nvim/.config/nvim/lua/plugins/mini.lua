@@ -4,4 +4,16 @@ vim.pack.add({
 })
 
 require("mini.ai").setup()
-require("mini.surround").setup()
+
+local msurround = require("mini.surround")
+
+msurround.setup({
+	mappings = {
+		add = "gsa",
+		deete = "gsd",
+		find = "gsf",
+		find_eft = "gsF",
+		highlight = "gsh",
+		replace = "gsr",
+	},
+})

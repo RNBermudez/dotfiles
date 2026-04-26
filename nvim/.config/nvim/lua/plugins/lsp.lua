@@ -63,6 +63,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_codeLens) then
 			vim.lsp.codelens.enable(true, { client = client.id, buf = args.buf })
 		end
+
+		vim.lsp.document_color.enable(true, nil, { style = "virtual" })
 	end,
 	desc = "LSP on attach",
 })
