@@ -95,7 +95,7 @@ Keys.map_leader("n", "m", bind(picker.marks), "Marks")
 
 -- Man pages
 Keys.map_leader("n", "em", bind(picker.man_pages), "Search man pages")
-Keys.map_leader("n", "U", bind(picker.undotree), "Open the undo tree")
+Keys.map_leader("n", "eu", bind(picker.undotree), "Open the undo tree")
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = picker_aug,
