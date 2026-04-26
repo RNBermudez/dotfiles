@@ -1,7 +1,10 @@
+# https://ghostty.org/docs/config/reference
+
 font-size = 14
 font-family = JetBrainsMono Nerd Font
 
 background-opacity = 0.95
+background-blur = true
 window-decoration = false
 window-padding-x = 12
 window-padding-y = 12
