@@ -1,35 +1,20 @@
 vim.pack.add({
-	{ src = "https://github.com/stevearc/oil.nvim" },
+	{ src = "https://github.com/nvim-mini/mini.files" },
 })
 
-local explorer = require("oil")
+local explorer = require("mini.files")
 
 explorer.setup({
-	columns = {
-		"icon",
-		"permissions",
-		"size",
-		"mtime",
+	mappings = {
+		go_in = "L",
+		go_in_plus = "l",
 	},
-	keymaps = {
-		["q"] = { "actions.close", mode = "n" },
-		["<C-v>"] = { "actions.select", opts = { vertical = true } },
-	},
-	view_options = {
-		show_hidden = true,
-	},
-	float = {
-		border = "rounded",
-	},
-	preview_win = {
-		border = "rounded",
-	},
-	confirmation = {
-		border = "rounded",
-	},
-	progress = {
-		border = "rounded",
+	windows = {
+		max_number = 3,
+		preview = true,
 	},
 })
 
-Keys.map_leader("n", "ee", "<CMD>Oil --float<CR>", "Open parent directory in Oil")
+Keys.map_leader("n", "ee", function()
+	explorer.open(vim.uv.cwd())
+end, "Open mini.files in CWD")
