@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Description: Switch themes interactively (fzf) or via argument.
 #
-# Prerequisites: fd, fzf
+# Prerequisites: fd, fzf, bash 4.0+ (associative arrays)
 #
 # Usage: ./switch_theme.sh [theme]
 

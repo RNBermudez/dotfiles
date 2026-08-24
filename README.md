@@ -14,18 +14,19 @@ Personal dotfiles, tailored to my workflow and preferences, built around my spec
 
 Some packages depend on the following tools:
 
-| Tool                                             | Required by                 | Used by      |
-| ------------------------------------------------ | --------------------------- | ------------ |
-| [7-Zip](https://www.7-zip.org/)                  | Yazi                        |              |
-| [atuin](https://atuin.sh/)                       | zsh                         |              |
-| [bat](https://github.com/sharkdp/bat)            | zsh                         | Neovim       |
-| [delta](https://github.com/dandavison/delta)     | zsh, git                    |              |
-| [eza](https://github.com/eza-community/eza)      | zsh                         | Neovim       |
-| [fd](https://github.com/sharkdp/fd)              | zsh, theme switcher         | Neovim, Yazi |
-| [fzf](https://github.com/junegunn/fzf)           | zsh, theme switcher, Neovim | Yazi         |
-| [jq](https://github.com/jqlang/jq)               | -                           | Yazi         |
-| [ripgrep](https://github.com/BurntSushi/ripgrep) | zsh                         | Neovim, Yazi |
-| [zoxide](https://github.com/ajeetdsouza/zoxide)  | zsh                         | Neovim, Yazi |
+| Tool                                              | Required by                 | Used by      |
+| ------------------------------------------------- | --------------------------- | ------------ |
+| [7-Zip](https://www.7-zip.org/)                   | Yazi                        |              |
+| [atuin](https://atuin.sh/)                        | zsh                         |              |
+| [bat](https://github.com/sharkdp/bat)             | zsh                         | Neovim       |
+| [bash](https://www.gnu.org/software/bash/) (4.0+) | theme switcher              |              |
+| [delta](https://github.com/dandavison/delta)      | zsh, git                    |              |
+| [eza](https://github.com/eza-community/eza)       | zsh                         | Neovim       |
+| [fd](https://github.com/sharkdp/fd)               | zsh, theme switcher         | Neovim, Yazi |
+| [fzf](https://github.com/junegunn/fzf)            | zsh, theme switcher, Neovim | Yazi         |
+| [jq](https://github.com/jqlang/jq)                | -                           | Yazi         |
+| [ripgrep](https://github.com/BurntSushi/ripgrep)  | zsh                         | Neovim, Yazi |
+| [zoxide](https://github.com/ajeetdsouza/zoxide)   | zsh                         | Neovim, Yazi |
 
 #### Neovim dependencies
 
@@ -47,19 +48,19 @@ Some packages depend on the following tools:
 | [selene](https://github.com/Kampfkarren/selene)                               | Linter         | Lua                              |
 | [shellcheck](https://github.com/koalaman/shellcheck)                          | Linter         | Bash, Shell                      |
 | [staticcheck](https://github.com/dominikh/go-tools)                           | Linter         | Go                               |
-| [tree-sitter](https://github.com/tree-sitter/tree-sitter)                     | Treesitter CLI |                                  |
+| [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter)                 | Treesitter CLI |                                  |
 
 ---
 
 ## Install
 
 > [!WARNING]
-> Make sure to read the [Theme Switcher](#theme-switcher) section. Themes are not stored in source control since they are dynamically generated from templates.
+> Make sure to read the [Theme Switcher](#theme-switcher) section. Themes are **not** stored in source control since they are dynamically generated from templates.
 > Some apps will fail to start without a valid theme configuration file.
 
 ### Directory structure
 
-Each package lives in its own directory at the repo root. Inside it, files are arranged to mirror the structure they'd have relative to `${HOME}`. For example:
+Each package lives in its own directory at the repository root. Inside it, files are arranged to mirror the structure they'd have relative to `${HOME}`. For example:
 
 ```
 dotfiles/
@@ -97,7 +98,7 @@ cd ~/dotfiles
 
 ### Stow
 
-[GNU Stow](https://www.gnu.org/software/stow/) is used to manage symlinks. From the repo root, run:
+[GNU Stow](https://www.gnu.org/software/stow/) is used to manage symlinks. From the repository root, run:
 
 ```sh
 stow <package>
@@ -122,6 +123,9 @@ stow -D <package>
 ## Notes
 
 ### Theme switcher
+
+> [!WARNING]
+> macOS ships `/bin/bash` at version 3.2.57. Install a current version (4.0+) with `brew install bash` and ensure it precedes `/bin` on your `PATH`.
 
 A very basic theme switcher that allows theme configuration and hot-reload of supported apps is provided. After stowing the `themes` package, it can be found in `${XDG_CONFIG_HOME}/themes/switch_theme.sh`.
 
