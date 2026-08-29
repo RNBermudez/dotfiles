@@ -123,4 +123,8 @@ zstyle ':completion:*:git-checkout:*' sort false
 for file in "${config_dir}/zsh/config"/*.zsh; do
   source "${file}"
 done
+
+# clean up
+unset file_previewer
+unset dir_previewer
 unset file
