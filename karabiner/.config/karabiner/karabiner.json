@@ -1,0 +1,73 @@
+{
+  "profiles": [
+    {
+      "complex_modifications": {
+        "parameters": { "basic.to_if_alone_timeout_milliseconds": 200 },
+        "rules": [
+          {
+            "description": "Physical Command and Spacebar opens Spotlight",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "spacebar",
+                  "modifiers": { "mandatory": ["left_option"] }
+                },
+                "to": [
+                  {
+                    "key_code": "spacebar",
+                    "modifiers": ["left_command"]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Physical Caps Lock acts as Escape on tap, Control on hold",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "caps_lock",
+                  "modifiers": { "optional": ["any"] }
+                },
+                "to": [{ "key_code": "left_control" }],
+                "to_if_alone": [{ "key_code": "escape" }],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Physical Left Control acts as Caps Lock",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "left_control",
+                  "modifiers": { "optional": ["any"] }
+                },
+                "to": [{ "key_code": "caps_lock" }],
+                "type": "basic"
+              }
+            ]
+          }
+        ]
+      },
+      "name": "AeroSpace",
+      "selected": true,
+      "simple_modifications": [
+        {
+          "from": { "key_code": "left_command" },
+          "to": [{ "key_code": "left_option" }]
+        },
+        {
+          "from": { "key_code": "left_option" },
+          "to": [{ "key_code": "left_command" }]
+        }
+      ],
+      "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
+    },
+    {
+      "name": "Default",
+      "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
+    }
+  ]
+}
