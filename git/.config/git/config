@@ -48,7 +48,7 @@
 [delta]
     navigate = true
     light = false
-    side-by-side = true
+    side-by-side = false
     line-numbers = true
 
 [merge]
