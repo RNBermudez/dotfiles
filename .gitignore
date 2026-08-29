@@ -1,10 +1,14 @@
- # Ignore k9s cluster definitions
+# Ignore k9s cluster definitions
 **/k9s/clusters
 
 # Ignore yazi downloaded flavors and package definitions
 **/yazi/flavors/*
 **/yazi/plugins/*
 **/yazi/package.toml
+
+# Ignore Karabiner-Elements auto generated files
+**/karabiner/automatic_backups/*
+**/karabiner/assets/*
 
 # Ignore dynamically generated application themes
 **/atuin/themes/theme.toml
