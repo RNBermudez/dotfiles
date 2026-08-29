@@ -1,0 +1,127 @@
+# Full documentation can be found at https://nikitabobko.github.io/AeroSpace/guide
+
+config-version = 2
+
+start-at-login = true
+auto-reload-config = true
+
+accordion-padding = 50
+
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+
+automatically-unhide-macos-hidden-apps = true
+
+[key-mapping]
+preset = 'qwerty'
+
+[gaps]
+inner.horizontal = 5
+inner.vertical = 5
+outer.left = 5
+outer.bottom = 5
+outer.top = 5
+outer.right = 5
+
+[mode.main.binding]
+# Applications
+alt-enter = '''exec-and-forget osascript -e '
+tell application "Ghostty"
+    new window
+end tell'
+'''
+alt-e = '''exec-and-forget osascript -e '
+tell application "Ghostty"
+    set cfg to new surface configuration
+    set command of cfg to "yazi"
+    new window with configuration cfg
+end tell'
+'''
+
+# Layout & Window State
+alt-q = 'close'
+alt-shift-f = 'fullscreen'
+alt-shift-y = 'layout floating tiling'
+alt-t = 'layout accordion tiles'
+alt-shift-t = 'layout accordion horizontal vertical'
+alt-shift-r = 'balance-sizes'
+
+# Focus
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
+alt-tab = 'focus-back-and-forth'
+
+# Move Window
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+
+# Resize
+alt-equal = 'resize width +10'
+alt-minus = 'resize width -10'
+alt-shift-equal = 'resize height +10'
+alt-shift-minus = 'resize height -10'
+
+# Workspaces
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+alt-6 = 'workspace 6'
+alt-7 = 'workspace 7'
+alt-8 = 'workspace 8'
+alt-9 = 'workspace 9'
+
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4'
+alt-shift-5 = 'move-node-to-workspace 5'
+alt-shift-6 = 'move-node-to-workspace 6'
+alt-shift-7 = 'move-node-to-workspace 7'
+alt-shift-8 = 'move-node-to-workspace 8'
+alt-shift-9 = 'move-node-to-workspace 9'
+
+# Workspace Navigation
+alt-i = 'workspace next'
+alt-u = 'workspace prev'
+alt-shift-i = 'move-node-to-workspace next'
+alt-shift-u = 'move-node-to-workspace prev'
+alt-shift-tab = 'workspace-back-and-forth'
+
+# Monitors
+alt-ctrl-h = 'focus-monitor left'
+alt-ctrl-j = 'focus-monitor down'
+alt-ctrl-k = 'focus-monitor up'
+alt-ctrl-l = 'focus-monitor right'
+
+alt-shift-ctrl-h = 'move-node-to-monitor left'
+alt-shift-ctrl-j = 'move-node-to-monitor down'
+alt-shift-ctrl-k = 'move-node-to-monitor up'
+alt-shift-ctrl-l = 'move-node-to-monitor right'
+
+# Service mode
+alt-shift-semicolon = 'mode service'
+
+[mode.service.binding]
+esc = ['reload-config', 'mode main']
+r = ['flatten-workspace-tree', 'mode main']
+f = ['layout floating tiling', 'mode main']
+
+backspace = ['close-all-windows-but-current', 'mode main']
+
+alt-shift-h = ['join-with left', 'mode main']
+alt-shift-j = ['join-with down', 'mode main']
+alt-shift-k = ['join-with up', 'mode main']
+alt-shift-l = ['join-with right', 'mode main']
+
+# Window callbacks
+[[on-window-detected]]
+if.app-id = 'md.obsidian'
+if.window-title-regex-substring = '(Settings|Community plugins)'
+check-further-callbacks = false
+run = 'layout floating'
