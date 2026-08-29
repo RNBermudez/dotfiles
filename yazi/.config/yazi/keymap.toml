@@ -1,10 +1,10 @@
 [[mgr.prepend_keymap]]
-on = ["g", "d"]
-run = "cd ${HOME}/dev"
+on = ["g", "p"]
+run = "cd ${HOME}/projects"
 desc = "Cd to dev"
 
 [[mgr.prepend_keymap]]
-on = ["g", "l"]
+on = ["g", "d"]
 run = "cd ${HOME}/downloads"
 desc = "Cd to downloads"
 
