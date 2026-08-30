@@ -54,16 +54,30 @@ Keys.map_leader("n", "bC", "<cmd>bp | bd! #<CR>", "Force close current buffer")
 
 -- Toggles
 Keys.map_leader("n", "td", function()
-	vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+	local is_enabled = vim.diagnostic.is_enabled()
+	vim.diagnostic.enable(not is_enabled)
+	vim.notify("Diagnostics " .. (not is_enabled and "enabled" or "disabled"), vim.log.levels.INFO)
 end, "Toggle diagnostics")
 Keys.map_leader("n", "ti", function()
-	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+	local is_enabled = vim.lsp.inlay_hint.is_enabled()
+	vim.lsp.inlay_hint.enable(not is_enabled)
+	vim.notify("Inlay hints " .. (not is_enabled and "enabled" or "disabled"), vim.log.levels.INFO)
 end, "Toggle inlay hints")
 Keys.map_leader("n", "tl", function()
-	vim.lsp.codelens.enable(not vim.lsp.codelens.is_enabled())
+	local is_enabled = vim.lsp.codelens.is_enabled()
+	vim.lsp.codelens.enable(not is_enabled)
+	vim.notify("Codelens " .. (not is_enabled and "enabled" or "disabled"), vim.log.levels.INFO)
 end, "Toggle codelens")
-Keys.map_leader("n", "ts", "<cmd>set spell!<CR>", "Toggle spell checking")
-Keys.map_leader("n", "tw", "<cmd>set wrap!<CR>", "Toggle line wrapping")
+Keys.map_leader("n", "ts", function()
+	local is_enabled = vim.o.spell
+	vim.o.spell = not is_enabled
+	vim.notify("Spell checking " .. (not is_enabled and "enabled" or "disabled"), vim.log.levels.INFO)
+end, "Toggle spell checking")
+Keys.map_leader("n", "tw", function()
+	local is_enabled = vim.o.wrap
+	vim.o.wrap = not is_enabled
+	vim.notify("Line wrapping " .. (not is_enabled and "enabled" or "disabled"), vim.log.levels.INFO)
+end, "Toggle line wrapping")
 
 -- Editor / plugins
 Keys.map_leader("n", "epu", vim.pack.update, "Update installed plugins")
