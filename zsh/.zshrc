@@ -80,6 +80,7 @@ export FZF_DEFAULT_OPTS=" \
   --layout=reverse \
   --info=right \
   --margin=1 \
+  --preview-window=right,wrap \
   --bind=ctrl-p:preview-up,\
 ctrl-n:preview-down,\
 ctrl-f:half-page-down,\
