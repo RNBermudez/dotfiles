@@ -35,7 +35,7 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 	desc = "Open help in a vertical split",
 })
 
--- Disable automatic comment on new lines
+-- Disable automatic comment on new lines with 'o'/'O'
 vim.api.nvim_create_autocmd("FileType", {
 	group = general,
 	callback = function()

@@ -87,10 +87,3 @@ Keys.map("i", "<CR>", function()
 	end
 	return "<CR>"
 end, "Override <CR> on completion menu to behave as regular Enter", { expr = true, replace_keycodes = true })
-
-Keys.map("i", "<TAB>", function()
-	if vim.fn.pumvisible() ~= 0 then
-		return "<C-y>"
-	end
-	return "<TAB>"
-end, "Override <TAB> on completion menu to behave as regular Enter", { expr = true, replace_keycodes = true })
