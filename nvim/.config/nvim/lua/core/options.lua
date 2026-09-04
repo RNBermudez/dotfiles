@@ -25,6 +25,9 @@ o.winborder = "rounded"
 o.pumborder = "rounded"
 o.pumheight = 10
 o.termguicolors = true
+-- Depends on plugins/statusline.lua
+o.statusline = "%{%v:lua.require('plugins.statusline')()%}"
+o.laststatus = 3
 
 -- Windows
 o.splitbelow = true

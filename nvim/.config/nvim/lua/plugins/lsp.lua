@@ -7,22 +7,6 @@ vim.lsp.enable({
 
 local lsp_attach_aug = vim.api.nvim_create_augroup("LspAttachAug", { clear = true })
 
--- Emit a progress-message on LSP progress events:
-vim.api.nvim_create_autocmd("LspProgress", {
-	group = lsp_attach_aug,
-	callback = function(args)
-		local value = args.data.params.value
-		vim.api.nvim_echo({ { value.message or "done" } }, false, {
-			id = "lsp." .. args.data.params.token,
-			kind = "progress",
-			source = "vim.lsp",
-			title = value.title,
-			status = value.kind ~= "end" and "running" or "success",
-			percent = value.percentage,
-		})
-	end,
-})
-
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = lsp_attach_aug,
 	callback = function(args)
@@ -50,17 +34,25 @@ vim.api.nvim_create_autocmd("LspAttach", {
 				buffer = args.buf,
 				callback = function(ar)
 					vim.lsp.buf.clear_references()
-					vim.api.nvim_clear_autocmds({ group = "LspHighlightAug", buffer = ar.buf })
+					vim.api.nvim_clear_autocmds({
+						group = "LspHighlightAug",
+						buffer = ar.buf,
+					})
 				end,
 				desc = "Cleanup LSP highlights on detach",
 			})
 		end
 
 		if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_codeLens) then
-			vim.lsp.codelens.enable(true, { client = client.id, buf = args.buf })
+			vim.lsp.codelens.enable(true, {
+				client = client.id,
+				buf = args.buf,
+			})
 		end
 
-		vim.lsp.document_color.enable(true, nil, { style = "virtual" })
+		vim.lsp.document_color.enable(true, nil, {
+			style = "virtual",
+		})
 	end,
 	desc = "LSP on attach",
 })
