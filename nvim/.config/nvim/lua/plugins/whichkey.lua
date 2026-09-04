@@ -16,7 +16,7 @@ whichkey.setup({
 		padding = { 1, 1 },
 	},
 	icons = {
-		separator = "",
+		mappings = false,
 	},
 })
 
