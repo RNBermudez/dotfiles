@@ -1,6 +1,8 @@
 vim.filetype.add({
 	extension = {
 		env = "dotenv",
+		gotmpl = "gotmpl",
+		tmpl = "gotmpl",
 	},
 	filename = {
 		["env"] = "dotenv",
@@ -8,6 +10,7 @@ vim.filetype.add({
 	},
 	pattern = {
 		["env%..*"] = "dotenv",
+		["[jt]sconfig.*.json"] = "jsonc",
 	},
 })
 
