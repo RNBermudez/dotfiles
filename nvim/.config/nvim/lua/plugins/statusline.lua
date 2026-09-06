@@ -4,6 +4,9 @@
 -- Based on: https://jacobnscott.com/posts/nvim-statusline/
 -- and https://github.com/MariaSolOs/dotfiles/blob/main/.config/nvim/lua/statusline.lua
 
+--- Width threshold in columns that control which components are rendered
+--- `min_window_width` hides components at this threshold
+--- `path_full_width` and `path_relative_width` control how much of the buffer's path is shown
 local min_window_width = 80
 local path_full_width = 120
 local path_relative_width = 90
@@ -180,8 +183,10 @@ local mode_abbr = {
 }
 -- stylua: ignore end
 
+---@type table<integer, boolean>
 local git_pending = {}
 
+---@param buf integer
 local function refresh_git_status(buf)
 	if git_pending[buf] then
 		return
@@ -277,6 +282,7 @@ local spinner_frames = { "✸", "✹", "✺", "✹", "✷" }
 local spinner_frame = 1
 local spinner_timer = nil
 
+---@type table<integer, table<integer, boolean>>
 local lsp_progress = {}
 
 local function stop_spinner()
@@ -340,8 +346,10 @@ local window_size = 0
 local is_wide_window = false
 
 -- Each component is a zero-arg function that returns a string (or nil/"" to be skipped).
+--- @type table<string, fun(): string?>
 local components = {}
 
+--- @return string
 function components.mode()
 	local settings = mode_settings[vim.api.nvim_get_mode().mode] or {}
 	local name = settings.name or "unknown"
@@ -350,6 +358,7 @@ function components.mode()
 	return hl["StatusLineMode" .. group](text)
 end
 
+--- @return string
 function components.path()
 	local buf_path = vim.api.nvim_buf_get_name(0)
 	if buf_path == "" then
@@ -361,16 +370,10 @@ function components.path()
 
 	if window_size > path_full_width then
 		local full_path = vim.fn.fnamemodify(buf_path, ":~")
-		if full_path ~= "" then
-			text = full_path
-		end
-	elseif window_size >= path_relative_width and window_size <= 120 then
+		text = full_path
+	elseif window_size >= path_relative_width and window_size <= path_full_width then
 		local cwd_path = vim.fn.fnamemodify(buf_path, ":.")
-		if cwd_path ~= "" then
-			text = cwd_path
-		end
-	else
-		text = filename
+		text = cwd_path
 	end
 
 	if vim.bo.modified then
@@ -380,11 +383,13 @@ function components.path()
 	return text
 end
 
+--- @return string?
 function components.diagnostics()
 	local text = vim.diagnostic.status(0)
 	return text ~= "" and text or nil
 end
 
+--- @return string?
 function components.git()
 	local status = vim.b.git_status
 	if not status then
@@ -411,6 +416,7 @@ function components.git()
 	return table.concat(parts, " ")
 end
 
+--- @return string?
 function components.encoding()
 	if not is_wide_window then
 		return nil
@@ -422,6 +428,7 @@ function components.encoding()
 	return enc ~= "" and hl.StatusLineDim(enc) or nil
 end
 
+--- @return string?
 function components.filetype()
 	if not is_wide_window then
 		return nil
@@ -430,6 +437,7 @@ function components.filetype()
 	return ft ~= "" and hl.StatusLineDim(ft) or nil
 end
 
+--- @return string?
 function components.fileformat()
 	if not is_wide_window then
 		return nil
@@ -437,6 +445,8 @@ function components.fileformat()
 	local ff = vim.bo.fileformat
 	return ff ~= "" and hl.StatusLineDim(ff) or nil
 end
+
+--- @return string?
 function components.lsp()
 	local clients = vim.lsp.get_clients({ bufnr = 0 })
 	if #clients == 0 then
@@ -461,6 +471,7 @@ function components.lsp()
 	return hl.StatusLineDim(table.concat(names, ",") .. " " .. status)
 end
 
+--- @return string
 function components.position()
 	if not is_wide_window then
 		return "%8(%l,%c%)"
@@ -468,12 +479,14 @@ function components.position()
 	return "%13(%l,%c %p%%%)"
 end
 
+--- @return string
 function components.separator()
 	return hl.StatusLineDim("|")
 end
 
 -- "%=" is the built-in split point between the left- and right-aligned halves.
 -- "%<" marks where Vim is allowed to start truncating.
+---@type string[]
 local sections = {
 	"mode",
 	"%<",
@@ -491,6 +504,8 @@ local sections = {
 	"position",
 }
 
+---@alias StatusLineItem { kind: "raw"|"separator"|"text", value: string? }
+---@return StatusLineItem[]
 local function collect_items()
 	local items = {}
 	for _, name in ipairs(sections) do
