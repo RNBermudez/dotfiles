@@ -12,6 +12,10 @@
       "rev": "25248c6aa002391936a6200f12d1466015987133",
       "src": "https://github.com/nvim-mini/mini.ai"
     },
+    "mini.clue": {
+      "rev": "1c136d62729c8c3b0c2d91379bc37efac15d916e",
+      "src": "https://github.com/nvim-mini/mini.clue"
+    },
     "mini.files": {
       "rev": "a249438d15fa6f64085ba83a9d1794d726aaf5ad",
       "src": "https://github.com/nvim-mini/mini.files"
@@ -19,10 +23,6 @@
     "mini.surround": {
       "rev": "8d5d0c5aa92449368ac251e85451d79d8f69d296",
       "src": "https://github.com/nvim-mini/mini.surround"
-    },
-    "neovim": {
-      "rev": "ff483051a47e27d84bdef47703538df1ed9f4a47",
-      "src": "https://github.com/rose-pine/neovim"
     },
     "nvim-lint": {
       "rev": "3d55c8f67c6ae5c15e1042571e107c7a3d5c5f4e",
@@ -35,10 +35,6 @@
     "tokyonight.nvim": {
       "rev": "cdc07ac78467a233fd62c493de29a17e0cf2b2b6",
       "src": "https://github.com/folke/tokyonight.nvim"
-    },
-    "which-key.nvim": {
-      "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
-      "src": "https://github.com/folke/which-key.nvim"
     }
   }
 }

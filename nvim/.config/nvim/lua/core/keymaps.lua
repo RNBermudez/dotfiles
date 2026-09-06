@@ -38,8 +38,8 @@ Keys.map("n", "<C-h>", "<C-w>h", "Move focus to the left window")
 Keys.map("n", "<C-j>", "<C-w>j", "Move focus to the window below")
 Keys.map("n", "<C-k>", "<C-w>k", "Move focus to the window above")
 Keys.map("n", "<C-l>", "<C-w>l", "Move focus to the right window")
-Keys.map_leader("n", "[", "^", "Go to the first non-blank character of the line")
-Keys.map_leader("n", "]", "$", "Go to the end of line")
+Keys.map_leader({ "n", "v" }, "[", "^", "Go to the first non-blank character of the line")
+Keys.map_leader({ "n", "v" }, "]", "$", "Go to the end of line")
 
 -- Editing
 Keys.map("v", "<", "<gv", "Indent left and reselect")
