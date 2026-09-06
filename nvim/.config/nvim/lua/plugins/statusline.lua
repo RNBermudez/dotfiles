@@ -537,7 +537,13 @@ local function render()
 	for i, item in ipairs(items) do
 		if item.kind == "separator" then
 			local prev_item, next_item = items[i - 1], items[i + 1]
-			if prev_item and prev_item.kind == "text" and next_item and next_item.kind == "text" then
+			if
+				prev_item
+				and prev_item.kind == "text"
+				and next_item
+				and next_item.kind == "text"
+				and next_item ~= items[#items]
+			then
 				table.insert(parts, item.value)
 			end
 		else
