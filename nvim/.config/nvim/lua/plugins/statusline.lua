@@ -1,21 +1,32 @@
+-- This file must be sourced after the colorscheme since `set_hl_groups()`
+-- reads colors from existing highlight groups at load time.
+--
 -- Based on: https://jacobnscott.com/posts/nvim-statusline/
+-- and https://github.com/MariaSolOs/dotfiles/blob/main/.config/nvim/lua/statusline.lua
+
+local min_window_width = 80
+local path_full_width = 120
+local path_relative_width = 90
+local spinner_interval_ms = 100
 
 local hl = {}
 
 -- Indexing `hl` with a highlight group returns a function that applies that
 -- highlight to some text within the statusline.
 setmetatable(hl, {
-	__index = function(_, group)
-		return function(text)
+	__index = function(t, group)
+		local fn = function(text)
 			return "%#" .. group .. "#" .. text .. "%*"
 		end
+		rawset(t, group, fn)
+		return fn
 	end,
 })
 
 ---@param group string
 ---@return vim.api.keyset.get_hl_info
 local function get_hl(group)
-	return vim.api.nvim_get_hl(0, { name = group, link = false, create = false })
+	return vim.api.nvim_get_hl(0, { name = group, create = false })
 end
 
 local function set_hl_groups()
@@ -54,9 +65,29 @@ set_hl_groups()
 
 -- Re-apply highlight groups on colorscheme change
 vim.api.nvim_create_autocmd("ColorScheme", {
-	group = vim.api.nvim_create_augroup("StatuslineColorsAug", { clear = true }),
+	group = vim.api.nvim_create_augroup("StatusLineColorsAug", { clear = true }),
 	desc = "Re-apply statusline highlights on colorscheme change",
 	callback = set_hl_groups,
+})
+
+-- Force statusline redraw for immediate state changes (buffer switch,
+-- diagnostics, modes, LSP attach/detach)
+vim.api.nvim_create_autocmd({
+	"BufEnter",
+	"BufLeave",
+	"BufWinEnter",
+	"DiagnosticChanged",
+	"ModeChanged",
+	"LspAttach",
+	"LspDetach",
+}, {
+	group = vim.api.nvim_create_augroup("StatusLineRedrawAug", { clear = true }),
+	callback = function()
+		vim.schedule(function()
+			vim.cmd.redrawstatus()
+		end)
+	end,
+	desc = "Redraw statusline on state changes",
 })
 
 -- Diagnostics are colored per-severity via vim.diagnostic's own status
@@ -85,16 +116,8 @@ vim.diagnostic.config({
 	},
 })
 
--- Redraw the statusline whenever diagnostics change, so counts stay current.
-vim.api.nvim_create_autocmd("DiagnosticChanged", {
-	group = vim.api.nvim_create_augroup("StatuslineDiagnosticsAug", { clear = true }),
-	callback = function()
-		vim.cmd.redrawstatus()
-	end,
-	desc = "Redraw statusline when diagnostics change",
-})
-
 -- stylua: ignore start
+---@type table<string, {name: string, hl: string}>
 local mode_settings = {
     ["c"]     = { name = "command",  hl = "Command" },
     ["ce"]    = { name = "ex",       hl = "Command" },
@@ -135,6 +158,7 @@ local mode_settings = {
 }
 
 -- Single-letter form shown when the window is narrower than `min_width`.
+---@type table<string, string>
 local mode_abbr = {
     normal        = "N",
     pending       = "P",
@@ -156,20 +180,8 @@ local mode_abbr = {
 }
 -- stylua: ignore end
 
--- Entering Insert/Command/Replace forces a redraw as a side effect of other work.
--- Entering Visual/Select does not, so force it explicitly.
-vim.api.nvim_create_autocmd("ModeChanged", {
-	group = vim.api.nvim_create_augroup("StatuslineModeAug", { clear = true }),
-	callback = function()
-		vim.cmd.redrawstatus()
-	end,
-	desc = "Redraw statusline immediately on mode change",
-})
-
--- Prevents overlapping git jobs for the same buffer if events fire in quick succession.
 local git_pending = {}
 
----@param buf integer
 local function refresh_git_status(buf)
 	if git_pending[buf] then
 		return
@@ -192,22 +204,17 @@ local function refresh_git_status(buf)
 
 	git_pending[buf] = true
 
-	-- Branch and status don't depend on each other, so both are fired at
-	-- once and merged once both jobs land, rather than chaining them.
-	local remaining_checks = 2
 	local branch = nil
 	local added, changed, removed = 0, 0, 0
 
 	local function finish()
-		remaining_checks = remaining_checks - 1
-		if remaining_checks > 0 then
-			return
-		end
-
 		git_pending[buf] = nil
 
 		vim.schedule(function()
 			if not vim.api.nvim_buf_is_valid(buf) then
+				return
+			end
+			if vim.api.nvim_buf_get_name(buf) ~= path then
 				return
 			end
 			vim.b[buf].git_status = {
@@ -220,97 +227,127 @@ local function refresh_git_status(buf)
 		end)
 	end
 
-	vim.system({ "git", "-C", root, "branch", "--show-current" }, { text = true }, function(branch_result)
-		local name = vim.trim(branch_result.stdout or "")
-		branch = name ~= "" and name or nil
-		finish()
-	end)
-
-	vim.system({ "git", "-C", root, "status", "--porcelain" }, { text = true }, function(status_result)
-		if status_result.code == 0 then
-			for line in (status_result.stdout or ""):gmatch("[^\n]+") do
-				local x, y = line:sub(1, 1), line:sub(2, 2)
-				if x == "?" then
-					added = added + 1
-				elseif x == "D" or y == "D" then
-					removed = removed + 1
-				elseif x == "A" or y == "A" then
-					added = added + 1
-				else
-					changed = changed + 1
+	local ok_status = pcall(
+		vim.system,
+		{ "git", "-C", root, "status", "--porcelain=v2", "--branch" },
+		{ text = true },
+		function(result)
+			if result.code == 0 then
+				for line in (result.stdout or ""):gmatch("[^\n]+") do
+					local kind = line:sub(1, 1)
+					if kind == "#" then
+						local head = line:match("^# branch%.head (.+)$")
+						if head then
+							branch = (head ~= "(detached)") and head or nil
+						end
+					elseif kind == "?" then
+						added = added + 1
+					elseif kind == "1" or kind == "2" or kind == "u" then
+						local xy = line:match("^[12u] (%S%S)")
+						if xy then
+							if xy:find("D", 1, true) then
+								removed = removed + 1
+							elseif xy:find("A", 1, true) then
+								added = added + 1
+							else
+								changed = changed + 1
+							end
+						end
+					end
 				end
 			end
+			finish()
 		end
+	)
+	if not ok_status then
 		finish()
-	end)
+	end
 end
 
+-- Refresh git status
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "FocusGained", "DirChanged" }, {
-	group = vim.api.nvim_create_augroup("StatuslineGitAug", { clear = true }),
+	group = vim.api.nvim_create_augroup("StatusLineGitAug", { clear = true }),
 	callback = function(args)
 		refresh_git_status(args.buf)
 	end,
 	desc = "Refresh git branch/status for the statusline",
 })
 
+local spinner_frames = { "✸", "✹", "✺", "✹", "✷" }
+local spinner_frame = 1
+local spinner_timer = nil
+
+local lsp_progress = {}
+
+local function stop_spinner()
+	if spinner_timer then
+		spinner_timer:stop()
+		spinner_timer:close()
+		spinner_timer = nil
+	end
+end
+
+local function start_spinner()
+	if spinner_timer then
+		return
+	end
+
+	local timer = vim.uv.new_timer()
+	if not timer then
+		return
+	end
+
+	spinner_timer = timer
+	spinner_timer:start(0, spinner_interval_ms, function()
+		spinner_frame = (spinner_frame % #spinner_frames) + 1
+		vim.schedule(function()
+			vim.cmd.redrawstatus()
+		end)
+	end)
+end
+
 -- Force a redraw when LSP progress updates
 vim.api.nvim_create_autocmd("LspProgress", {
+	group = vim.api.nvim_create_augroup("StatusLineLspProgressAug", { clear = true }),
+	desc = "Track LSP progress for statusline spinner",
 	callback = function(ev)
-		local value = ev.data.params.value
-		local buf = ev.buf
+		local client_id = ev.data.client_id
+		local token = ev.data.params.token
 
-		if value.kind == "end" then
-			vim.b[buf].lsp_progress = nil
-			vim.cmd.redrawstatus()
-			return
-		end
-
-		local client = vim.lsp.get_client_by_id(ev.data.client_id)
-		local parts = {
-			client and (client.name .. ":"),
-			value.title,
-			value.message,
-			value.percentage and string.format("%d%%", value.percentage),
-		}
-
-		local clean = {}
-		for _, p in ipairs(parts) do
-			if p and p ~= "" then
-				table.insert(clean, p)
+		if ev.data.params.value.kind == "end" then
+			if lsp_progress[client_id] then
+				lsp_progress[client_id][token] = nil
+				if not next(lsp_progress[client_id]) then
+					lsp_progress[client_id] = nil
+				end
 			end
+		else
+			lsp_progress[client_id] = lsp_progress[client_id] or {}
+			lsp_progress[client_id][token] = true
 		end
 
-		vim.b[buf].lsp_progress = table.concat(clean, " ")
+		if next(lsp_progress) then
+			start_spinner()
+		else
+			stop_spinner()
+		end
+
 		vim.cmd.redrawstatus()
 	end,
 })
 
----@param width integer
----@return fun(): boolean
-local function visible_at(width)
-	return function()
-		return vim.fn.winwidth(0) > width
-	end
-end
-
-local min_width = 80
-local is_wide = visible_at(min_width)
+local window_size = 0
+local is_wide_window = false
 
 -- Each component is a zero-arg function that returns a string (or nil/"" to be skipped).
----@type table<string, fun(): string?>
 local components = {}
 
 function components.mode()
 	local settings = mode_settings[vim.api.nvim_get_mode().mode] or {}
 	local name = settings.name or "unknown"
 	local group = settings.hl or "Other"
-	local text = is_wide() and name or (mode_abbr[name] or name)
+	local text = is_wide_window and name or (mode_abbr[name] or name)
 	return hl["StatusLineMode" .. group](text)
-end
-
-function components.progress()
-	local text = vim.b.lsp_progress
-	return (text and text ~= "") and hl.StatusLineDim(text) or nil
 end
 
 function components.path()
@@ -319,46 +356,28 @@ function components.path()
 		return "[No Name]"
 	end
 
-	local tail = vim.fn.fnamemodify(buf_path, ":t")
-	local head = vim.fn.fnamemodify(buf_path, ":~:h")
+	local filename = vim.fn.fnamemodify(buf_path, ":t")
+	local text = filename
 
-	local text = head == "." and tail or hl.StatusLineDim(head .. "/") .. tail
+	if window_size > path_full_width then
+		local full_path = vim.fn.fnamemodify(buf_path, ":~")
+		if full_path ~= "" then
+			text = full_path
+		end
+	elseif window_size >= path_relative_width and window_size <= 120 then
+		local cwd_path = vim.fn.fnamemodify(buf_path, ":.")
+		if cwd_path ~= "" then
+			text = cwd_path
+		end
+	else
+		text = filename
+	end
 
 	if vim.bo.modified then
 		text = text .. hl.StatusLineBold("*")
 	end
 
 	return text
-end
-
-local encoding_visible = visible_at(min_width)
-function components.encoding()
-	if not encoding_visible() then
-		return nil
-	end
-	local enc = vim.bo.fileencoding
-	if enc == "" then
-		enc = vim.o.encoding
-	end
-	return enc ~= "" and hl.StatusLineDim(enc) or nil
-end
-
-local filetype_visible = visible_at(min_width)
-function components.filetype()
-	if not filetype_visible() then
-		return nil
-	end
-	local ft = vim.bo.filetype
-	return ft ~= "" and hl.StatusLineDim(ft) or nil
-end
-
-local fileformat_visible = visible_at(min_width)
-function components.fileformat()
-	if not fileformat_visible() then
-		return nil
-	end
-	local ff = vim.bo.fileformat
-	return ff ~= "" and hl.StatusLineDim(ff) or nil
 end
 
 function components.diagnostics()
@@ -392,8 +411,65 @@ function components.git()
 	return table.concat(parts, " ")
 end
 
+function components.encoding()
+	if not is_wide_window then
+		return nil
+	end
+	local enc = vim.bo.fileencoding
+	if enc == "" then
+		enc = vim.o.encoding
+	end
+	return enc ~= "" and hl.StatusLineDim(enc) or nil
+end
+
+function components.filetype()
+	if not is_wide_window then
+		return nil
+	end
+	local ft = vim.bo.filetype
+	return ft ~= "" and hl.StatusLineDim(ft) or nil
+end
+
+function components.fileformat()
+	if not is_wide_window then
+		return nil
+	end
+	local ff = vim.bo.fileformat
+	return ff ~= "" and hl.StatusLineDim(ff) or nil
+end
+function components.lsp()
+	local clients = vim.lsp.get_clients({ bufnr = 0 })
+	if #clients == 0 then
+		return nil
+	end
+
+	local busy = false
+	for _, client in ipairs(clients) do
+		if lsp_progress[client.id] then
+			busy = true
+			break
+		end
+	end
+
+	local status = busy and spinner_frames[spinner_frame] or "✓"
+
+	local names = {}
+	for _, client in ipairs(clients) do
+		table.insert(names, client.name)
+	end
+
+	return hl.StatusLineDim(table.concat(names, ",") .. " " .. status)
+end
+
 function components.position()
-	return "%3l:%-2c %3p%%"
+	if not is_wide_window then
+		return "%8(%l,%c%)"
+	end
+	return "%13(%l,%c %p%%%)"
+end
+
+function components.separator()
+	return hl.StatusLineDim("|")
 end
 
 -- "%=" is the built-in split point between the left- and right-aligned halves.
@@ -402,39 +478,55 @@ local sections = {
 	"mode",
 	"%<",
 	"path",
-	"progress",
 	"%=",
 	"diagnostics",
+	"separator",
 	"git",
+	"separator",
 	"encoding",
 	"fileformat",
 	"filetype",
+	"separator",
+	"lsp",
 	"position",
 }
 
----@param name string
----@return string?
-local function render_section(name)
-	if vim.startswith(name, "%") then
-		return name
+local function collect_items()
+	local items = {}
+	for _, name in ipairs(sections) do
+		if vim.startswith(name, "%") then
+			table.insert(items, { kind = "raw", value = name })
+		elseif name == "separator" then
+			local last = items[#items]
+			if not (last and last.kind == "separator") then
+				table.insert(items, { kind = "separator", value = components.separator() })
+			end
+		else
+			local component = components[name]
+			local text = component and component()
+			if text and text ~= "" then
+				table.insert(items, { kind = "text", value = text })
+			end
+		end
 	end
-
-	local component = components[name]
-	if not component then
-		return nil
-	end
-
-	return component()
+	return items
 end
 
----@return string
 local function render()
+	window_size = vim.fn.winwidth(0)
+	is_wide_window = window_size > min_window_width
+
+	local items = collect_items()
 	local parts = {}
 
-	for _, name in ipairs(sections) do
-		local text = render_section(name)
-		if text and text ~= "" then
-			table.insert(parts, text)
+	for i, item in ipairs(items) do
+		if item.kind == "separator" then
+			local prev_item, next_item = items[i - 1], items[i + 1]
+			if prev_item and prev_item.kind == "text" and next_item and next_item.kind == "text" then
+				table.insert(parts, item.value)
+			end
+		else
+			table.insert(parts, item.value)
 		end
 	end
 
