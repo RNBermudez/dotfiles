@@ -108,7 +108,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		Keys.map_leader({ "n", "v" }, "rd", bind(picker.lsp_definitions), "Go to definition", buf)
 		Keys.map_leader({ "n", "v" }, "rD", bind(picker.lsp_declarations), "Go to declaration", buf)
 		Keys.map_leader({ "n", "v" }, "rt", bind(picker.lsp_typedefs), "Find type definitions", buf)
-		Keys.map_leader({ "n", "v" }, "rO", bind(picker.lsp_document_symbols), "Find symbols in buffer", buf)
+		Keys.map_leader({ "n", "v" }, "rs", bind(picker.lsp_document_symbols), "Find symbols in buffer", buf)
 		Keys.map_leader({ "n", "v" }, "rw", bind(picker.lsp_live_workspace_symbols), "Find symbols in workspace", buf)
 		Keys.map_leader({ "n", "v" }, "rx", vim.lsp.codelens.run, "Run codelens", buf)
 	end,
