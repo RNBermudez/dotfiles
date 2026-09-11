@@ -33,31 +33,105 @@ local function get_hl(group)
 end
 
 local function set_hl_groups()
-	local bg = get_hl("StatusLine").bg
+	local statusline_bg = get_hl("StatusLine").bg
 
+-- stylua: ignore start
+    --- Allows highlight groups override from colorscheme config with a fallback
 	---@type table<string, vim.api.keyset.highlight>
 	local groups = {
-		StatusLineModeNormal = { fg = get_hl("Keyword").fg, bg = bg, bold = true },
-		StatusLineModeInsert = { fg = get_hl("String").fg, bg = bg, bold = true },
-		StatusLineModeVisual = { fg = get_hl("Special").fg, bg = bg, bold = true },
-		StatusLineModeReplace = { fg = get_hl("Error").fg, bg = bg, bold = true },
-		StatusLineModeCommand = { fg = get_hl("Number").fg, bg = bg, bold = true },
-		StatusLineModePending = { fg = get_hl("Comment").fg, bg = bg, bold = true },
-		StatusLineModeOther = { fg = get_hl("Comment").fg, bg = bg, bold = true },
+		StatusLineModeNormal = {
+			fg = get_hl("StatusLineModeNormal").fg or get_hl("MiniStatuslineModeNormal").bg or get_hl("Function").fg,
+			bg = get_hl("StatusLineModeNormal").bg or statusline_bg,
+			bold = true,
+		},
+		StatusLineModeInsert = {
+			fg = get_hl("StatusLineModeInsert").fg or get_hl("MiniStatuslineModeInsert").bg or get_hl("String").fg,
+			bg = get_hl("StatusLineModeInsert").bg or statusline_bg,
+			bold = true,
+		},
+		StatusLineModeVisual = {
+			fg = get_hl("StatusLineModeVisual").fg or get_hl("MiniStatuslineModeVisual").bg or get_hl("Constant").fg,
+			bg = get_hl("StatusLineModeVisual").bg or statusline_bg,
+			bold = true,
+		},
+		StatusLineModeReplace = {
+			fg = get_hl("StatusLineModeReplace").fg or get_hl("MiniStatuslineModeReplace").bg or get_hl( "Error").fg,
+			bg = get_hl("StatusLineModeReplace").bg or statusline_bg,
+			bold = true,
+		},
+		StatusLineModeCommand = {
+			fg = get_hl("StatusLineModeCommand").fg or get_hl("MiniStatuslineModeCommand").bg or get_hl( "Number").fg,
+			bg = get_hl("StatusLineModeCommand").bg or statusline_bg,
+			bold = true,
+		},
+		StatusLineModePending = {
+			fg = get_hl("StatusLineModePending").fg or get_hl("MiniStatuslineModeOther").bg or get_hl("Comment").fg,
+			bg = get_hl("StatusLineModePending").bg or statusline_bg,
+			bold = true,
+		},
+		StatusLineModeOther = {
+			fg = get_hl("StatusLineModeOther").fg or get_hl("MiniStatuslineModeOther").bg or get_hl("Comment").fg,
+            bg = get_hl("StatusLineModeOther").bg or statusline_bg,
+			bold = true,
+		},
 
-		StatusLineDiagError = { fg = get_hl("DiagnosticError").fg, bg = bg },
-		StatusLineDiagWarn = { fg = get_hl("DiagnosticWarn").fg, bg = bg },
-		StatusLineDiagInfo = { fg = get_hl("DiagnosticInfo").fg, bg = bg },
-		StatusLineDiagHint = { fg = get_hl("DiagnosticHint").fg, bg = bg },
+		StatusLineDiagError = {
+			fg = get_hl("StatusLineDiagError").fg or get_hl("DiagnosticError").fg,
+			bg = get_hl("StatusLineDiagError").bg or statusline_bg,
+		},
+		StatusLineDiagWarn = {
+			fg = get_hl("StatusLineDiagWarn").fg or get_hl("DiagnosticWarn").fg,
+			bg = get_hl("StatusLineDiagWarn").bg or statusline_bg,
+		},
+		StatusLineDiagInfo = {
+			fg = get_hl("StatusLineDiagInfo").fg or get_hl("DiagnosticInfo").fg,
+			bg = get_hl("StatusLineDiagInfo").bg or statusline_bg,
+		},
+		StatusLineDiagHint = {
+			fg = get_hl("StatusLineDiagHint").fg or get_hl("DiagnosticHint").fg,
+			bg = get_hl("StatusLineDiagHint").bg or statusline_bg,
+		},
 
-		StatusLineGitBranch = { fg = get_hl("Identifier").fg, bg = bg },
-		StatusLineGitAdd = { fg = get_hl("diffAdded").fg, bg = bg },
-		StatusLineGitChange = { fg = get_hl("diffChanged").fg, bg = bg },
-		StatusLineGitDelete = { fg = get_hl("diffRemoved").fg, bg = bg },
+		StatusLineGitBranch = {
+			fg = get_hl("StatusLineGitBranch").fg or get_hl("Identifier").fg,
+			bg = get_hl("StatusLineGitBranch").bg or statusline_bg,
+		},
+		StatusLineGitAdd = {
+			fg = get_hl("StatusLineGitAdd").fg or get_hl("Added").fg or get_hl("DiffAdd").bg,
+			bg = get_hl("StatusLineGitAdd").bg or statusline_bg,
+		},
+		StatusLineGitChange = {
+			fg = get_hl("StatusLineGitChange").fg or get_hl("Changed").fg or get_hl("DiffChange").bg,
+			bg = get_hl("StatusLineGitChange").bg or statusline_bg,
+		},
+		StatusLineGitDelete = {
+			fg = get_hl("StatusLineGitDelete").fg or get_hl("Removed").fg or get_hl("DiffDelete").bg,
+			bg = get_hl("StatusLineGitDelete").bg or statusline_bg,
+		},
 
-		StatusLineDim = { fg = get_hl("Comment").fg, bg = bg },
-		StatusLineBold = { fg = get_hl("StatusLine").fg, bg = bg, bold = true },
+		StatusLineDim = {
+			fg = get_hl("StatusLineDim").fg or get_hl("Comment").fg,
+			bg = get_hl("StatusLineDim").bg or statusline_bg,
+		},
+		StatusLineBold = {
+			fg = get_hl("StatusLineBold").fg or get_hl("StatusLine").fg,
+			bg = get_hl("StatusLineBold").bg or statusline_bg,
+			bold = true,
+		},
+		StatusLinePath = {
+		    fg = get_hl("StatusLinePath").fg or get_hl("StatusLine").fg,
+		    bg = get_hl("StatusLinePath").bg or statusline_bg,
+        },
+		StatusLinePosition = {
+		    fg = get_hl("StatusLinePosition").fg or get_hl("StatusLine").fg,
+		    bg = get_hl("StatusLinePosition").bg or statusline_bg,
+         },
+		StatusLineLspSpinner = {
+		    fg = get_hl("StatusLineLspSpinner").fg or get_hl("StatusLine").fg,
+		    bg = get_hl("StatusLineLspSpinner").bg or statusline_bg,
+         },
 	}
+	-- stylua: ignore end
 
 	for group, opts in pairs(groups) do
 		vim.api.nvim_set_hl(0, group, opts)
@@ -163,23 +237,23 @@ local mode_settings = {
 -- Single-letter form shown when the window is narrower than `min_width`.
 ---@type table<string, string>
 local mode_abbr = {
-    normal        = "N",
-    pending       = "P",
-    visual        = "V",
+    normal        = " N",
+    pending       = " P",
+    visual        = " V",
     ["v-line"]    = "VL",
     ["v-block"]   = "VB",
-    select        = "S",
+    select        = " S",
     ["s-line"]    = "SL",
     ["s-block"]   = "SB",
-    insert        = "I",
-    replace       = "R",
+    insert        = " I",
+    replace       = " R",
     ["v-replace"] = "VR",
-    command       = "C",
+    command       = " C",
     ex            = "EX",
-    more          = "M",
-    confirm       = "?",
-    shell         = "!",
-    terminal      = "T",
+    more          = " M",
+    confirm       = " ?",
+    shell         = " !",
+    terminal      = " T",
 }
 -- stylua: ignore end
 
@@ -278,7 +352,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "FocusGained", "DirCha
 	desc = "Refresh git branch/status for the statusline",
 })
 
-local spinner_frames = { "✸", "✹", "✺", "✹", "✷" }
+local spinner_frames = { "⠋", "⠙", "⠚", "⠞", "⠖", "⠦", "⠴", "⠲", "⠳", "⠓" }
 local spinner_frame = 1
 local spinner_timer = nil
 
@@ -354,7 +428,7 @@ function components.mode()
 	local settings = mode_settings[vim.api.nvim_get_mode().mode] or {}
 	local name = settings.name or "unknown"
 	local group = settings.hl or "Other"
-	local text = is_wide_window and name or (mode_abbr[name] or name)
+	local text = is_wide_window and string.format("%9" .. "s", name) or (mode_abbr[name] or name)
 	return hl["StatusLineMode" .. group](text)
 end
 
@@ -362,7 +436,7 @@ end
 function components.path()
 	local buf_path = vim.api.nvim_buf_get_name(0)
 	if buf_path == "" then
-		return "[No Name]"
+		return hl.StatusLinePath("[No Name]")
 	end
 
 	local filename = vim.fn.fnamemodify(buf_path, ":t")
@@ -375,6 +449,8 @@ function components.path()
 		local cwd_path = vim.fn.fnamemodify(buf_path, ":.")
 		text = cwd_path
 	end
+
+	text = hl.StatusLinePath(text)
 
 	if vim.bo.modified then
 		text = text .. hl.StatusLineBold("*")
@@ -461,7 +537,7 @@ function components.lsp()
 		end
 	end
 
-	local status = busy and spinner_frames[spinner_frame] or "✓"
+	local status = busy and hl.StatusLineLspSpinner(spinner_frames[spinner_frame]) or " "
 
 	local names = {}
 	for _, client in ipairs(clients) do
@@ -474,9 +550,9 @@ end
 --- @return string
 function components.position()
 	if not is_wide_window then
-		return "%8(%l,%c%)"
+		return hl.StatusLinePosition("%8(%l,%c%)")
 	end
-	return "%13(%l,%c %p%%%)"
+	return hl.StatusLinePosition("%12(%l,%c %p%%%)")
 end
 
 --- @return string

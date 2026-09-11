@@ -49,6 +49,7 @@ Keys.map("v", "K", ":m '<-2<CR>gv=gv", "Move selection up")
 
 -- Buffers
 Keys.map_leader("n", "<Tab>", "<C-^>", "Alternate between current and last buffer")
+Keys.map_leader("n", "ba", "<cmd>%y<CR>", "Copy buffer content")
 Keys.map_leader("n", "bc", "<cmd>bp | bd #<CR>", "Close current buffer")
 Keys.map_leader("n", "bC", "<cmd>bp | bd! #<CR>", "Force close current buffer")
 
