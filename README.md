@@ -169,6 +169,35 @@ stow fsh
 fast-theme XDG:catppuccin-mocha
 ```
 
+### Keyd mappings on Linux
+
+> [!WARNING]
+> The `keyd` configuration resides in system space (`/etc/keyd`), so Stow must target `/` instead of `${HOME}`.
+
+1. Ensure the `keyd` service is enabled and active:
+
+```sh
+systemctl status keyd.service
+```
+
+2. Create the destination directory in `/etc` if it does not exist:
+
+```sh
+sudo mkdir -p /etc/keyd
+```
+
+3. Stow the `keyd` package targeting `/`:
+
+```sh
+sudo stow -t / keyd
+```
+
+4. Reload `keyd` to pick up the changes:
+
+```sh
+sudo keyd reload
+```
+
 ---
 
 ## License
