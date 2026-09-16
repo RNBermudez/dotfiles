@@ -52,6 +52,18 @@ Some packages depend on the following tools:
 
 ---
 
+#### Yazi
+
+Plugins:
+
+- [yazi-rs/plugins:mount](https://github.com/yazi-rs/plugins/tree/main/mount.yazi)
+
+Flavors:
+
+- [Mintass/rose-pine](https://github.com/yazi-rs/flavors/tree/main/catppuccin-mocha.yazi)
+- [BennyOe/tokyo-night](https://github.com/BennyOe/tokyo-night.yazi)
+- [yazi-rs/flavors:catppuccin-mocha](https://github.com/Mintass/rose-pine.yazi)
+
 ## Install
 
 > [!WARNING]
