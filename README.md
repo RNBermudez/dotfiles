@@ -50,6 +50,15 @@ Some packages depend on the following tools:
 | [staticcheck](https://github.com/dominikh/go-tools)                           | Linter         | Go                               |
 | [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter)                 | Treesitter CLI |                                  |
 
+#### Yazi packages
+
+| Package                                                                                               | Type   |
+| ----------------------------------------------------------------------------------------------------- | ------ |
+| [yazi-rs/plugins:mount](https://github.com/yazi-rs/plugins/tree/main/mount.yazi)                      | Plugin |
+| [BennyOe/tokyo-night](https://github.com/BennyOe/tokyo-night.yazi)                                    | Flavor |
+| [Mintass/rose-pine](https://github.com/Mintass/rose-pine.yazi)                                        | Flavor |
+| [yazi-rs/flavors:catppuccin-mocha](https://github.com/yazi-rs/flavors/tree/main/catppuccin-mocha.yazi) | Flavor |
+
 ---
 
 ## Install
