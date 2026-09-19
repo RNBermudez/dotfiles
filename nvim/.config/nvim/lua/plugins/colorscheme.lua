@@ -34,5 +34,5 @@ rose_pine.setup({
 	},
 })
 
--- vim.cmd("colorscheme tokyonight")
-vim.cmd("colorscheme rose-pine")
+vim.cmd("colorscheme tokyonight")
+-- vim.cmd("colorscheme rose-pine")
