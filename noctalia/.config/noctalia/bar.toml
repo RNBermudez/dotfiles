@@ -1,12 +1,19 @@
+[bar]
+order = ["default", "secondary"]
+
+[bar.default.monitor.DVI-D-1]
+enabled = false
+
+[bar.secondary.monitor.HDMI-A-1]
+enabled = false
+
 [bar.default]
-start = ["workspaces", "Separator", "active_window"]
-center = ["media"]
+start = ["workspaces", "Separator", "media", "audio_visualizer"]
+center = ["active_window"]
 end = [
-  "tray",
   "notifications",
-  "group:NoctaliaTray",
+  "group:TrayGroup",
   "battery",
-  "bluetooth",
   "network",
   "Separator",
   "weather",
@@ -17,19 +24,43 @@ end = [
   "session",
 ]
 concave_edge_corners = false
+hover_highlight = false
+margin_ends = 0
+padding = 10
+panel_overlap = 0
+radius = 0
+shadow = false
+thickness = 40
+widget_spacing = 8
+
+[[bar.default.capsule_group]]
+id = "TrayGroup"
+members = [
+  "LeftArrow",
+  "tray",
+  "Separator",
+  "input_volume",
+  "volume",
+  "bluetooth",
+]
+accordion_direction = "start"
+accordion = true
+enabled = true
+fill = "surface_variant"
+opacity = 0.0
+padding = 6.0
+
+[bar.secondary]
+enabled = true
+start = ["workspaces", "Separator", "active_window"]
+center = []
+end = []
+concave_edge_corners = false
+hover_highlight = false
 margin_ends = 0
 padding = 18
 panel_overlap = 0
 radius = 0
-widget_spacing = 12
 shadow = false
-
-[[bar.default.capsule_group]]
-accordion = true
-accordion_direction = "start"
-enabled = true
-fill = "surface_variant"
-id = "NoctaliaTray"
-members = ["volume", "input_volume"]
-opacity = 0.0
-padding = 6.0
+thickness = 40
+widget_spacing = 8

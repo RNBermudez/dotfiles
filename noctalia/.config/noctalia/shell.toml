@@ -1,20 +1,27 @@
 [shell]
 app_icon_colorize = true
+app_icon_color = "on_surface"
 button_borders = false
 card_borders = false
 input_borders = false
+font_family = "Noto Sans"
 popup_borders = false
 polkit_agent = true
 
 [shell.launcher]
+categories = false
 compact = true
 show_icons = false
 
+[shell.greeter_sync]
+auto_sync = true
+
 [shell.panel]
 borders = false
-transparency_mode = "glass"
+open_near_click_control_center = true
 session_placement = "floating"
 session_position = "center"
+transparency_mode = "glass"
 
 [shell.session]
 show_shortcuts = false
