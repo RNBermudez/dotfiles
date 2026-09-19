@@ -1,0 +1,35 @@
+[bar.default]
+start = ["workspaces", "Separator", "active_window"]
+center = ["media"]
+end = [
+  "tray",
+  "notifications",
+  "group:NoctaliaTray",
+  "battery",
+  "bluetooth",
+  "network",
+  "Separator",
+  "weather",
+  "Spacer",
+  "date",
+  "clock",
+  "Separator",
+  "session",
+]
+concave_edge_corners = false
+margin_ends = 0
+padding = 18
+panel_overlap = 0
+radius = 0
+widget_spacing = 12
+shadow = false
+
+[[bar.default.capsule_group]]
+accordion = true
+accordion_direction = "start"
+enabled = true
+fill = "surface_variant"
+id = "NoctaliaTray"
+members = ["volume", "input_volume"]
+opacity = 0.0
+padding = 6.0

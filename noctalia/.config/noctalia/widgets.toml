@@ -1,0 +1,63 @@
+# Custom widgets
+
+[widget.NoctaliaIcon]
+glyph = "noctalia"
+type = "custom_button"
+
+[widget.Separator]
+color = "on_secondary"
+glyph = "letter-i"
+type = "custom_button"
+
+[widget.Spacer]
+type = "spacer"
+
+# Built-in widgets
+
+[widget.active_window]
+display = "text_only"
+
+[widget.battery]
+scale = 1.15
+show_label = false
+
+[widget.clock]
+format = "{:%l:%M%P}"
+
+[widget.input_volume]
+mute_color = "on_tertiary"
+
+[widget.launcher]
+glyph = "rocket"
+
+[widget.media]
+artist_first = true
+hide_album_art = true
+hide_when_no_media = true
+title_scroll = "always"
+
+[widget.network]
+show_label = false
+
+[widget.notifications]
+hide_when_no_unread = true
+
+[widget.tray]
+hide_passive = false
+
+[widget.volume]
+mute_color = "on_tertiary"
+show_label = false
+
+[widget.weather]
+show_condition = false
+
+[widget.workspaces]
+active_pill_size = 2.0
+empty_color = "on_tertiary"
+focused_output_only = true
+font_weight = 600
+hide_when_empty = true
+occupied_color = "outline"
+pill_scale = 0.80
+style = "minimal"

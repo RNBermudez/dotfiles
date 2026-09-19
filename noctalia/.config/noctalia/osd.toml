@@ -1,0 +1,5 @@
+[osd]
+border = false
+
+[osd.kinds]
+media = false

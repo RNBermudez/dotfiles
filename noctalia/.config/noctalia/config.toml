@@ -1,0 +1,23 @@
+# Noctalia automatically loads and merges all *.toml files in this folder.
+# See: https://docs.noctalia.dev/noctalia/configuration/?section=including-extra-files#including-extra-files
+
+[backdrop]
+enabled = true
+
+[brightness]
+enable_ddcutil = true
+sync_all_monitors = true
+
+[desktop_widgets]
+enabled = false
+
+[location]
+auto_locate = true
+
+[nightlight]
+enabled = true
+temperature_night = 3000
+
+[theme.templates]
+builtin_ids = ["gtk3", "gtk4", "niri", "qt"]
+community_ids = ["brave-origin"]

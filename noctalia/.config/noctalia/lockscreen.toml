@@ -1,0 +1,90 @@
+[lockscreen_widgets]
+enabled = true
+schema_version = 2
+widget_order = [
+  "lockscreen-login-box@eDP-1",
+  "lockscreen-widget-0000000000000002",
+  "lockscreen-widget-0000000000000004",
+  "lockscreen-widget-0000000000000005",
+]
+
+[lockscreen_widgets.grid]
+cell_size = 16
+major_interval = 4
+visible = true
+
+[lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+box_height = 128.0
+box_width = 720.0
+cx = 960.0
+cy = 732.0
+output = "eDP-1"
+placement_height = 1080.0
+placement_width = 1920.0
+rotation = 0.0
+type = "login_box"
+
+[lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+background_color = "surface_variant"
+background_opacity = 0.0
+background_radius = 18.0
+center_password_text = true
+input_opacity = 1.0
+input_radius = 6.0
+layout = "regular"
+show_caps_lock = true
+show_keyboard_layout = true
+show_login_button = false
+show_media = false
+show_session_buttons = true
+show_unlock_hint = false
+show_weather = false
+
+[lockscreen_widgets.widget.lockscreen-widget-0000000000000002]
+box_height = 272.0
+box_width = 464.0
+cx = 984.0
+cy = 444.0
+output = "eDP-1"
+placement_height = 1080.0
+placement_width = 1920.0
+rotation = 0.0
+type = "clock"
+
+[lockscreen_widgets.widget.lockscreen-widget-0000000000000002.settings]
+background = false
+center_text = false
+clock_style = "digital"
+format = "{:%-I:%M %p}"
+shadow = false
+
+[lockscreen_widgets.widget.lockscreen-widget-0000000000000004]
+box_height = 256.0
+box_width = 224.0
+cx = 128.0
+cy = 142.0
+output = "eDP-1"
+placement_height = 1080.0
+placement_width = 1920.0
+rotation = 0.0
+type = "media_player"
+
+[lockscreen_widgets.widget.lockscreen-widget-0000000000000004.settings]
+background = false
+layout = "vertical"
+shadow = false
+
+[lockscreen_widgets.widget.lockscreen-widget-0000000000000005]
+box_height = 128.0
+box_width = 224.0
+cx = 1792.0
+cy = 78.0
+output = "eDP-1"
+placement_height = 1080.0
+placement_width = 1920.0
+rotation = 0.0
+type = "weather"
+
+[lockscreen_widgets.widget.lockscreen-widget-0000000000000005.settings]
+background = false
+shadow = false
