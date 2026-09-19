@@ -1,11 +1,11 @@
 # Custom widgets
 
-[widget.NoctaliaIcon]
-glyph = "noctalia"
+[widget.LeftArrow]
+glyph = "caret-left-filled"
 type = "custom_button"
 
 [widget.Separator]
-color = "on_secondary"
+color = "outline"
 glyph = "letter-i"
 type = "custom_button"
 
@@ -17,6 +17,16 @@ type = "spacer"
 [widget.active_window]
 display = "text_only"
 
+[widget.audio_visualizer]
+bands = 30
+color_2 = "tertiary"
+mirrored = false
+width = 120
+
+[widget.audio_visualizer.actions]
+left = "panel-open control-center media"
+right = "media toggle"
+
 [widget.battery]
 scale = 1.15
 show_label = false
@@ -26,6 +36,7 @@ format = "{:%l:%M%P}"
 
 [widget.input_volume]
 mute_color = "on_tertiary"
+show_label = false
 
 [widget.launcher]
 glyph = "rocket"
@@ -34,6 +45,7 @@ glyph = "rocket"
 artist_first = true
 hide_album_art = true
 hide_when_no_media = true
+max_length = 100
 title_scroll = "always"
 
 [widget.network]
