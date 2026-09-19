@@ -1,0 +1,32 @@
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
+include "input.kdl"
+include "outputs.kdl"
+include "binds.kdl"
+include "layout.kdl"
+include "visuals.kdl"
+include "animations.kdl"
+include "alttab.kdl"
+include "windowrules.kdl"
+include "layerrules.kdl"
+environment {
+    XDG_CURRENT_DESKTOP "niri"
+    QT_QPA_PLATFORM "wayland"
+    QT_QPA_PLATFORMTHEME "qt6ct"
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+    XDG_SESSION_TYPE "wayland"
+}
+hotkey-overlay {
+    skip-at-startup
+}
+switch-events {
+    lid-close {
+        spawn "noctalia" "msg" "session" "lock-and-suspend"
+    }
+}
+screenshot-path "~/media/pictures/screenshots/screenshot-%Y-%m-%d %H-%M-%S.png"
+debug {
+    honor-xdg-activation-with-invalid-serial
+}
+spawn-at-startup "noctalia"
+
+include optional=true "noctalia.kdl"

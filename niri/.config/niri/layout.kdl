@@ -1,0 +1,35 @@
+layout {
+    gaps 0
+    center-focused-column "on-overflow"
+    always-center-single-column
+    background-color "transparent"
+    default-column-display "normal"
+    tab-indicator {
+        hide-when-single-tab
+        place-within-column
+    }
+    preset-column-widths {
+        proportion 0.66667
+        proportion 0.5
+        proportion 0.33333
+    }
+    preset-window-heights {
+        proportion 0.66667
+        proportion 0.5
+        proportion 0.33333
+    }
+    default-column-width {
+        proportion 1.0
+    }
+    struts {
+
+    }
+    border {
+        on
+        width 1
+    }
+    focus-ring {
+        off
+    }
+}
+

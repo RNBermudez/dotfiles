@@ -1,0 +1,17 @@
+blur {
+    passes 1
+    offset 3
+    noise 0.01
+    saturation 1
+}
+overview {
+    workspace-shadow {
+        off
+    }
+}
+gestures {
+    hot-corners {
+        off
+    }
+}
+prefer-no-csd

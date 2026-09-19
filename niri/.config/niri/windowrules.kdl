@@ -1,0 +1,54 @@
+window-rule {
+    open-maximized true
+    open-maximized-to-edges true
+    geometry-corner-radius 0
+    clip-to-geometry true
+    draw-border-with-background false
+}
+window-rule {
+    background-effect {
+        blur true
+        xray false
+    }
+}
+window-rule {
+    match app-id="^steam$" title="^notificationtoasts_\\d+_desktop$"
+    default-floating-position x=10 y=10 relative-to="bottom-right"
+    open-focused false
+}
+window-rule {
+    match app-id="dev.noctalia.Noctalia"
+    open-maximized false
+    open-maximized-to-edges false
+    open-floating true
+    default-column-width {
+        fixed 1100
+    }
+    default-window-height {
+        fixed 800
+    }
+}
+window-rule {
+    match app-id="^discord$"
+}
+window-rule {
+    match app-id="^Spotify"
+}
+window-rule {
+    match app-id="^org.cachyos"
+    open-floating true
+    open-maximized false
+    open-maximized-to-edges false
+}
+window-rule {
+    match app-id="^obsidian$"
+}
+window-rule {
+    match app-id="^md.obsidian.Obsidian$"
+    match title="^Settings - obsidian"
+    match title="^Community plugins - obsidian"
+    open-floating true
+    open-maximized false
+    open-maximized-to-edges false
+}
+

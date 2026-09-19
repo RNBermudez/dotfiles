@@ -1,0 +1,17 @@
+// ThinkPad T480
+output "LG Display 0x0521 Unknown" {
+    mode "1920x1080@60.020"
+    scale 1.0
+    position x=0 y=0
+}
+// Desktop Monitors
+output "LG Electronics 23EA53 0x00002615" {
+    mode "1920x1080@60.000"
+    scale 1.0
+    position x=0 y=0
+}
+output "LG Electronics 23EA53 0x01010101" {
+    mode "1920x1080@60.000"
+    scale 1.0
+    position x=0 y=0
+}
