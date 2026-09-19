@@ -18,6 +18,7 @@
 **/eza/theme.yml
 **/ghostty/themes/theme
 **/git/themes/theme.gitconfig
+**/niri/noctalia.kdl
 **/nvim/colors/*
 **/p10k/colors.zsh
 **/yazi/theme.toml

@@ -1,0 +1,21 @@
+input {
+    keyboard {
+        xkb {
+            // Keyboard configured using VIA or keyd
+            layout "us"
+            variant "altgr-intl"
+        }
+    }
+    touchpad {
+        accel-speed 0.0
+        dwt
+        scroll-factor 0.5
+        tap
+    }
+    mouse {
+        accel-profile "flat"
+        accel-speed 0.0
+    }
+    workspace-auto-back-and-forth
+}
+

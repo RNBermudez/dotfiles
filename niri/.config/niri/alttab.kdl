@@ -1,0 +1,22 @@
+// Recent windows switcher (Alt+Tab)
+recent-windows {
+    debounce-ms 500
+    open-delay-ms 150
+    binds {
+        Super+Tab {
+            next-window scope="all"
+        }
+        Super+Ctrl+Tab {
+            previous-window scope="all"
+        }
+        Alt+grave {
+            next-window filter="app-id"
+        }
+        Alt+Shift+grave {
+            previous-window filter="app-id"
+        }
+    }
+    highlight {
+        corner-radius 12
+    }
+}
