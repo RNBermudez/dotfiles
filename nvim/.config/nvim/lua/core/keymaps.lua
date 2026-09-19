@@ -79,6 +79,11 @@ Keys.map_leader("n", "tw", function()
 	vim.o.wrap = not is_enabled
 	vim.notify("Line wrapping " .. (not is_enabled and "enabled" or "disabled"), vim.log.levels.INFO)
 end, "Toggle line wrapping")
+Keys.map_leader("n", "tc", function()
+	local is_enabled = vim.lsp.document_color.is_enabled()
+	vim.lsp.document_color.enable(not is_enabled)
+	vim.notify("Color presentation " .. (not is_enabled and "enabled" or "disabled"), vim.log.levels.INFO)
+end, "Toggle color presentation")
 
 -- Editor / plugins
 Keys.map_leader("n", "epu", vim.pack.update, "Update installed plugins")

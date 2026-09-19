@@ -64,4 +64,5 @@ o.spelllang = "en_us"
 o.spelloptions = "camel"
 
 -- Opt-ins
+o.exrc = true
 vim.cmd("packadd nvim.undotree")
