@@ -1,0 +1,20 @@
+[shell]
+app_icon_colorize = true
+button_borders = false
+card_borders = false
+input_borders = false
+popup_borders = false
+polkit_agent = true
+
+[shell.launcher]
+compact = true
+show_icons = false
+
+[shell.panel]
+borders = false
+transparency_mode = "glass"
+session_placement = "floating"
+session_position = "center"
+
+[shell.session]
+show_shortcuts = false

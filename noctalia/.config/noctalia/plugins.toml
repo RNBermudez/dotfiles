@@ -1,0 +1,9 @@
+[plugins]
+enabled = ["yuuto/calculator"]
+
+[plugin_settings."yuuto/calculator"]
+angle_unit = "deg"
+panel_layer = "overlay"
+panel_open_near_click = false
+panel_placement = "floating"
+panel_position = "center_right"
