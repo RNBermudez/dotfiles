@@ -20,3 +20,19 @@ wrap = "yes"
 
 [input]
 cursor_blink = false
+
+[opener]
+imv_file = [{ run = 'imv-dir %s1', orphan = true, desc = "Open file with imv" }]
+drawing_file = [
+  { run = 'drawing %s1', orphan = true, desc = "Edit file with Drawing" },
+]
+
+[open]
+prepend_rules = [
+  { mime = "image/*", use = [
+    "imv_file",
+    "drawing_file",
+    "open",
+    "reveal",
+  ] },
+]

@@ -1,0 +1,45 @@
+# vim: set filetype=ini:
+[options]
+suppress_default_binds = true
+
+[binds]
+q = quit
+
+# Image navigation
+k = prev
+j = next
+gg = goto 1
+<Shift+G> = goto -1
+
+# Panning
+<Shift+J> = pan 0 -50
+<Shift+K> = pan 0 50
+<Shift+H> = pan 50 0
+<Shift+L> = pan -50 0
+
+# Zooming
+h = zoom 1
+l = zoom -1
+
+# Rotate Clockwise by 90 degrees
+r = rotate by 90
+<Shift+R> = rotate by -90
+
+# Other commands
+x = close
+f = fullscreen
+o = overlay
+<Shift+D> = exec trash-put "$imv_current_file"; close
+c = center
+s = scaling next
+<Shift+S> = upscaling next
+a = zoom actual
+<Ctrl+r> = reset
+
+# Gif playback
+<period> = next_frame
+<space> = toggle_playing
+
+# Slideshow control
+t = slideshow +1
+<Shift+T> = slideshow -1

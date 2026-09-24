@@ -14,19 +14,21 @@ Personal dotfiles, tailored to my workflow and preferences, built around my spec
 
 Some packages depend on the following tools:
 
-| Tool                                              | Required by                 | Used by      |
-| ------------------------------------------------- | --------------------------- | ------------ |
-| [7-Zip](https://www.7-zip.org/)                   | Yazi                        |              |
-| [atuin](https://atuin.sh/)                        | zsh                         |              |
-| [bat](https://github.com/sharkdp/bat)             | zsh                         | Neovim       |
-| [bash](https://www.gnu.org/software/bash/) (4.0+) | theme switcher              |              |
-| [delta](https://github.com/dandavison/delta)      | zsh, git                    |              |
-| [eza](https://github.com/eza-community/eza)       | zsh                         | Neovim       |
-| [fd](https://github.com/sharkdp/fd)               | zsh, theme switcher         | Neovim, Yazi |
-| [fzf](https://github.com/junegunn/fzf)            | zsh, theme switcher, Neovim | Yazi         |
-| [jq](https://github.com/jqlang/jq)                | -                           | Yazi         |
-| [ripgrep](https://github.com/BurntSushi/ripgrep)  | zsh                         | Neovim, Yazi |
-| [zoxide](https://github.com/ajeetdsouza/zoxide)   | zsh                         | Neovim, Yazi |
+| Tool                                                    | Required by                 | Used by      |
+| ------------------------------------------------------- | --------------------------- | ------------ |
+| [7-Zip](https://www.7-zip.org/)                         | Yazi                        |              |
+| [atuin](https://atuin.sh/)                              | zsh                         |              |
+| [bat](https://github.com/sharkdp/bat)                   | zsh                         | Neovim       |
+| [bash](https://www.gnu.org/software/bash/) (4.0+)       | theme switcher              |              |
+| [delta](https://github.com/dandavison/delta)            | zsh, git                    |              |
+| [eza](https://github.com/eza-community/eza)             | zsh                         | Neovim       |
+| [fd](https://github.com/sharkdp/fd)                     | zsh, theme switcher         | Neovim, Yazi |
+| [fzf](https://github.com/junegunn/fzf)                  | zsh, theme switcher, Neovim | Yazi         |
+| [jq](https://github.com/jqlang/jq)                      | -                           | Yazi         |
+| [imv](https://sr.ht/~exec64/imv/)                       | Yazi (open images)          |              |
+| [ripgrep](https://github.com/BurntSushi/ripgrep)        | zsh                         | Neovim, Yazi |
+| [trash-cli](https://github.com/andreafrancia/trash-cli) | imv                         |              |
+| [zoxide](https://github.com/ajeetdsouza/zoxide)         | zsh                         | Neovim, Yazi |
 
 #### Neovim dependencies
 
@@ -52,11 +54,11 @@ Some packages depend on the following tools:
 
 #### Yazi packages
 
-| Package                                                                                               | Type   |
-| ----------------------------------------------------------------------------------------------------- | ------ |
-| [yazi-rs/plugins:mount](https://github.com/yazi-rs/plugins/tree/main/mount.yazi)                      | Plugin |
-| [BennyOe/tokyo-night](https://github.com/BennyOe/tokyo-night.yazi)                                    | Flavor |
-| [Mintass/rose-pine](https://github.com/Mintass/rose-pine.yazi)                                        | Flavor |
+| Package                                                                                                | Type   |
+| ------------------------------------------------------------------------------------------------------ | ------ |
+| [yazi-rs/plugins:mount](https://github.com/yazi-rs/plugins/tree/main/mount.yazi)                       | Plugin |
+| [BennyOe/tokyo-night](https://github.com/BennyOe/tokyo-night.yazi)                                     | Flavor |
+| [Mintass/rose-pine](https://github.com/Mintass/rose-pine.yazi)                                         | Flavor |
 | [yazi-rs/flavors:catppuccin-mocha](https://github.com/yazi-rs/flavors/tree/main/catppuccin-mocha.yazi) | Flavor |
 
 ---
